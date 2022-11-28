@@ -1,8 +1,8 @@
 import home from '../pages/home.js';
-import loginDentist from '../pages/login-dentist.js';
-import loginPatient from '../pages/login-patient.js';
-import schedule from '../pages/schedule.js';
-import appointment from '../pages/appointment.js';
+import loginDentist from '../pages/login/login-dentist.js';
+import loginPatient from '../pages/login/login-patient.js';
+import schedule from '../schedule/pages/schedule.js';
+import appointment from '../pages/appointment/appointment.js';
 
 
 const main = document.querySelector('.main');
