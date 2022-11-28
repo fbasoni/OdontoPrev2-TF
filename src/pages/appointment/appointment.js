@@ -3,7 +3,7 @@ import data from "../../lib/data/data.js";
 const dentistsData = data.dentists;
 const patientsData = data.patients;
 
-const appointmentData = data.availability;
+const appointmentData = data.appointment;
 console.log(dentistsData);
 
 export default () => {
@@ -34,8 +34,8 @@ export default () => {
         appointmentInfo.innerHTML = `
         <div>
           <p class="patient-name">Paciente: ${appointment.patientName}</p>
-          <p class="appointment-date">Dia da consulta: ${appointment.schedule[0].date}</p>
-          <p class="appointment-time">Horário da consulta: ${appointment.schedule[0].time}</p>
+          <p class="appointment-date">Dia da consulta: ${appointment.date}</p>
+          <p class="appointment-time">Horário da consulta: ${appointment.time}</p>
         </div>
         `;
       })
