@@ -1,6 +1,9 @@
 import data from "../../lib/data/data.js";
 
 const dentistsData = data.dentists;
+const patientsData = data.patients;
+
+const appointmentData = data.availability;
 console.log(dentistsData);
 
 export default () => {
@@ -26,14 +29,13 @@ export default () => {
 
   const appointmentInfo = container.querySelector(".appointment-info");
 
-  const printAppointment = (data) => {
-    const appointmentTemplate = data
-      .map((dentist) => {
+  const printAppointment = (appointments) => {
+    const appointmentTemplate = appointments.map((appointment) => {
         appointmentInfo.innerHTML = `
         <div>
-          <p class="patient-name">Paciente: ${dentist.name}</p>
-          <p class="appointment-date">Dia da consulta: ${dentist.schedule[0].date}</p>
-          <p class="appointment-time">Horário da consulta: ${dentist.schedule[0].time}</p>
+          <p class="patient-name">Paciente: ${appointment.patientName}</p>
+          <p class="appointment-date">Dia da consulta: ${appointment.schedule[0].date}</p>
+          <p class="appointment-time">Horário da consulta: ${appointment.schedule[0].time}</p>
         </div>
         `;
       })
@@ -41,7 +43,7 @@ export default () => {
     return appointmentTemplate;
   };
 
-  printAppointment(dentistsData);
+  printAppointment(appointmentData);
 
   return container;
 };
