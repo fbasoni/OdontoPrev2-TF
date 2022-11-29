@@ -71,6 +71,15 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 - Tela de agenda com as consultas marcadas
 - Alerta: para novas consultas onde eu possa aceitar ou não o agendamento
 
+* **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as
+  necessidades do usuário.
+
+* **Definição de pronto:** 
+- Passar pelo Slint
+- Code Review
+- Códigos, nomes das divs, class, afins, tudo em inglês
+- Versionado
+
 ## 🖼️ 5. Protótipo
 
 ### Baixa fidelidade
@@ -107,7 +116,7 @@ Após fazermos os testes manuais e de usabilidade, incorporamos os feedbacks dad
 * Fabiany Basoni [Linkedin](https://www.linkedin.com/in/fabianybasoni/) | [GitHub](https://github.com/fbasoni)
 * Juliene Araujo [Linkedin](https://www.linkedin.com/in/juliene-araujo/) | [GitHub](https://github.com/Juliene-Araujo)
 * Raquel Thabata [Linkedin](https://www.linkedin.com/in/raquel-thabata/) | [GitHub](https://github.com/raquelthabata)
-* Tamyres [Linkedin](https://www.linkedin.com/in/tamyres-fran%C3%A7a-34ab93186/) | [GitHub](https://github.com/Tamyresfmelo)
+* Tamyres França [Linkedin](https://www.linkedin.com/in/tamyres-fran%C3%A7a-34ab93186/) | [GitHub](https://github.com/Tamyresfmelo)
 
 [^1]: Acesso a informações de saúde na internet: uma questão de saúde pública? - https://www.scielo.br/j/ramb/a/SGm5WjwfG6Hj5Bf5g8s6DRs/?lang=pt
 [^2]: Oiana.com - https://oiana.com.br/blog/atendimento/por-que-voce-deve-oferecer-agendamento-online-aos-seus-clientes/
