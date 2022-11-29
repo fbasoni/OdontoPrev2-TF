@@ -1,48 +1,61 @@
-*{
-    margin: 0;
+.body-home{
+    border: 2px solid black;
+    background: linear-gradient(127.78deg, #001B30 28.17%, #0C508E 48.4%, #047AAD 73.86%, #047AAD 103.23%, rgba(170, 219, 240, 0) 153.5%);
+}
+.container-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 5%;
     padding: 0;
+    background-color: white;
 }
-.h1{
-    position: absolute;
-    width: 413.06px;
-    height: 131.74px;
-    left: 121.31px;
-    top: 140.42000000000002px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 59px;
+
+
+.text-title-home{
+    text-align: center;
+}
+
+.text-home{
     display: flex;
-    align-items: center;
-    color: #001B30;
+    gap: 2rem;
+    margin: 10% 5% 5% 5%;
 }
-.text{
-    position: absolute;
-    width: 576.49px;
-    height: 207.66px;
-    left: 127.21000000000001px;
-    top: 241.70000000000005px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    font-size: 23px;
+
+.space-btn-home{
     display: flex;
+    justify-content: center;
     align-items: center;
-    color: black;
+    margin-bottom: 5%;
 }
+
+.btn-home{
+    margin:5%;
+    cursor:pointer;
+    padding: 10px;
+    width: 150px;
+    border-radius: 15px;
+    background-color: #009BDD;
+    color: white;
+    font-size: large;
+    border: #009BDD;
+}
+
 .btn-Beneficiário{
-    position: absolute;
-    width: 257.44px;
-    height: 71.4px;
-    left: 174.31px;
-    top: 707.32px;
+    background-image: url("/assets/icons/others/user-beneficiary.svg");
+    background-repeat: no-repeat;
+    text-align: end;
 }
-.btn-Dentista{
-    position: absolute;
-    width: 250.84px;
-    height: 71.4px;
-    left: 475.76px;
-    top: 707.32px;
+
+.btn-dentist{
+    background-image: url("/assets/icons/others/tooth.svg");
+    background-repeat: no-repeat;
+    padding-left: 9%;
 }
+
+.odonto-home{
+    color: rgba(0, 29, 104, 1);
+    margin: 0;
+}
+

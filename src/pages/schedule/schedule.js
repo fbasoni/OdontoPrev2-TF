@@ -1,6 +1,6 @@
-import { getDentistas, getPatients } from "../../lib/storage.js"
-const dentistsData = getDentistas();
-const patientsData = getPatients();
+// import { getDentistas, getPatients } from "../../lib/storage.js"
+// const dentistsData = getDentistas();
+// const patientsData = getPatients();
 
 export default () => {
   const container = document.createElement('div');    
