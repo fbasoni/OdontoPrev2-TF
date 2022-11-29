@@ -1,10 +1,16 @@
 .container-login-patient {  
-    display: flex;
-    margin: 9rem;
-    width: 55rem;
-    height: 24rem;
-    margin-left: 32rem;
     align-items: center;
+  }
+
+  .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+  }
+  
+  .login-form{
+    border: 5px solid black;
   }
   
   .login-logo, 
