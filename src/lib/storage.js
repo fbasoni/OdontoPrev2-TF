@@ -31,6 +31,27 @@ export const getAuthDentist = () => {
   } else return null;
 }
 
+export const filterPatientByLoginAndPassword = (email, password) => {
+  const patients= getPatients();
+  const patientsFilter = patients.filter((patient) => patient.email === email && patient.password === password);
+  if (patientsFilter.length > 0) {
+    return patientsFilter[0];
+  } else return null;
+}
+
+export const authPatients = (idPatient) => {
+  return localStorage.setItem('auth-patient', idPatient);
+}
+
+export const getAuthPatient = () => {
+  const auth = localStorage.getItem("auth-patient");
+  const patients= getPatient();
+  const patientsFilter = patients.filter((patient) => patient.id === auth);
+  if (patientsFilter.length > 0) {
+    return patientsFilter[0];
+  } else return null;
+}
+
 const createDentistsData = () => {
   const dentistsArr = [];
   const dentistJuliene = {
