@@ -1,3 +1,5 @@
+import { authDentists, filterDentistByLoginAndPassword } from "../../../lib/storage.js";
+
 export default () => {
   const containerLoginDentist = document.createElement('div');    
   containerLoginDentist.classList.add('container-login-dentist')    
@@ -28,7 +30,13 @@ export default () => {
   const btnLoginDentist = containerLoginDentist.querySelector('#btn-login-dentist');
 
   btnLoginDentist.addEventListener('click', () => {
-    window.location.hash = '#schedule'  
+    const dentist = filterDentistByLoginAndPassword(emailDentist.value, passwordDentist.value);
+    if (dentist !== null) {
+      const dentistId = authDentists(dentist.id);      
+      window.location.hash = "#appointment";  
+    } else {
+      window.alert('erro');
+    }
   })
 
   return containerLoginDentist;

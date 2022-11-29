@@ -10,6 +10,27 @@ export const getSchedule = () => {
   return JSON.parse(localStorage.getItem("schedule"));
 }
 
+export const filterDentistByLoginAndPassword = (email, password) => {
+  const dentists = getDentists();
+  const dentistsFilter = dentists.filter((dentist) => dentist.email === email && dentist.password === password);
+  if (dentistsFilter.length > 0) {
+    return dentistsFilter[0];
+  } else return null;
+}
+
+export const authDentists = (idDentist) => {
+  return localStorage.setItem('auth-dentist', idDentist);
+}
+
+export const getAuthDentist = () => {
+  const auth = localStorage.getItem("auth-dentist");
+  const dentists = getDentists();
+  const dentistsFilter = dentists.filter((dentist) => dentist.id === auth);
+  if (dentistsFilter.length > 0) {
+    return dentistsFilter[0];
+  } else return null;
+}
+
 const createDentistsData = () => {
   const dentistsArr = [];
   const dentistJuliene = {
