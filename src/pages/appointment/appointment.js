@@ -1,4 +1,4 @@
-//import { getDentists, getPatients, getSchedule, initDados } from "./storage.js";
+//import { getDentists, getPatients, getSchedule, initDados } from "../../lib/storage.js";
 
 // if (localStorage.length == 0) {
 //   initDados();
@@ -7,9 +7,12 @@
 // const dentistsData = getDentists();
 // const patientsData = getPatients();
 // const scheduleData = getSchedule();
-
-// const appointmentData = data.appointment;
 // console.log(dentistsData);
+
+// console.log(dentistsData, patientsData, scheduleData)
+// const data = [...dentistsData, ...patientsData, ...scheduleData];
+// console.log(data)
+// console.log(data[3].name)
 
 export default () => {
   const container = document.createElement("div");
