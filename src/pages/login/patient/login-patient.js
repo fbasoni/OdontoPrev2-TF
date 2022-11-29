@@ -27,7 +27,7 @@ export default () => {
   const btnLoginPatient = containerLoginPatient.querySelector('#btn-login-patient');
 
   btnLoginPatient.addEventListener('click', () => {
-    window.location.hash = '#appointment'  
+    window.location.hash = '#schedule'  
   })
 
     
