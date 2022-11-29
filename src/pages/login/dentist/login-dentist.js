@@ -39,9 +39,11 @@ export default () => {
   const btnLoginDentist = containerLoginDentist.querySelector('#btn-login-dentist');
 
   btnLoginDentist.addEventListener('click', () => {
+    console.log(dentist.uid)
     const dentist = filterDentistByLoginAndPassword(emailDentist.value, passwordDentist.value);
     if (dentist !== null) {
-      const dentistId = authDentists(dentist.id);      
+      const dentistId = authDentists(dentist.uid); 
+      console.log(dentist.uid)     
       window.location.hash = "#appointment";  
     } else {
       window.alert('erro');

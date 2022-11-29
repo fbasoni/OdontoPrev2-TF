@@ -44,8 +44,9 @@ export default () => {
   btnLoginPatient.addEventListener('click', () => {
 
     const patient = filterPatientByLoginAndPassword(emailPatient.value, passwordPatient.value);
-    if (patient !== null) {
-      const patientId = authPatients(patient.id);      
+      if (patient !== null) {
+      authPatients(patient.uid); 
+      console.log(patient.uid)       
       window.location.hash = "#schedule";  
     } else {
       window.alert('erro');
