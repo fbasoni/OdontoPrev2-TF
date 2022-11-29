@@ -38,15 +38,20 @@ export default () => {
   const passwordDentist = containerLoginDentist.querySelector('#input-password');
   const btnLoginDentist = containerLoginDentist.querySelector('#btn-login-dentist');
 
-  btnLoginDentist.addEventListener('click', () => {
-    const dentist = filterDentistByLoginAndPassword(emailDentist.value, passwordDentist.value);
+  btnLoginDentist.addEventListener("click", () => {
+    const dentist = filterDentistByLoginAndPassword(
+      emailDentist.value,
+      passwordDentist.value
+    );
+    
     if (dentist !== null) {
-      const dentistId = authDentists(dentist.id);      
-      window.location.hash = "#appointment";  
+      authDentists(dentist.uid);
+      console.log(dentist.uid);
+      window.location.hash = "#appointment";
     } else {
-      window.alert('erro');
+      window.alert("erro");
     }
-  })
+  });
 
   return containerLoginDentist;
 };

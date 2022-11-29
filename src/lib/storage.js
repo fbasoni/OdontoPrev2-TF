@@ -16,20 +16,20 @@ export const filterDentistByLoginAndPassword = (email, password) => {
   if (dentistsFilter.length > 0) {
     return dentistsFilter[0];
   } else return null;
-}
+};
 
 export const authDentists = (idDentist) => {
-  return localStorage.setItem('auth-dentist', idDentist);
-}
+  return localStorage.setItem("auth-dentist", idDentist);
+};
 
 export const getAuthDentist = () => {
-  const auth = localStorage.getItem("auth-dentist");
+  const auth = parseInt(localStorage.getItem("auth-dentist"));
   const dentists = getDentists();
-  const dentistsFilter = dentists.filter((dentist) => dentist.id === auth);
+  const dentistsFilter = dentists.filter((dentist) => dentist.uid === auth);
   if (dentistsFilter.length > 0) {
     return dentistsFilter[0];
   } else return null;
-}
+};
 
 export const filterPatientByLoginAndPassword = (email, password) => {
   const patients= getPatients();
@@ -39,14 +39,15 @@ export const filterPatientByLoginAndPassword = (email, password) => {
   } else return null;
 }
 
-export const authPatients = (idPatient) => {
+
+export const authPatients = (idPatient) => {   
   return localStorage.setItem('auth-patient', idPatient);
 }
 
 export const getAuthPatient = () => {
-  const auth = localStorage.getItem("auth-patient");
-  const patients= getPatient();
-  const patientsFilter = patients.filter((patient) => patient.id === auth);
+  const auth = parseInt(localStorage.getItem("auth-patient"));
+  const patients= getPatients();
+  const patientsFilter = patients.filter((patient) => patient.uid === auth);
   if (patientsFilter.length > 0) {
     return patientsFilter[0];
   } else return null;
