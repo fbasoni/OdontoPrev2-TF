@@ -107,24 +107,27 @@ const createPatientsData = () => {
 const createScheduleData = () => {
   const schedulesArr = []
   const firstAppointment = {
-    dentistUid: 1,
+    dentistUid: 2,
     patientUid: null,
+    patientName: "Joana Augusta",
     time: 9,
-    date: new Date("2022/12/02").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/02"),
     status: "available",
   };
   const secondAppointment = {
-    dentistUid: 1,
+    dentistUid: 2,
     patientUid: null,
+    patientName: "Maria Fernanda",
     time: 10,
-    date: new Date("2022/12/03").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/03"),
     status: "available",
   };
   const thirdAppointment = {
     detistUid: 2,
     patientUid: 1,
+    patientName: "João Silva",
     time: 11,
-    date: new Date("2022/12/04").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/04"),
     status: "confirmed",
   }
   schedulesArr.push(firstAppointment)
