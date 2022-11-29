@@ -1,6 +1,7 @@
 <div align="center">
 
-   ![logo-odontoprev-1536](https://user-images.githubusercontent.com/109089136/204630003-84ea9496-4e58-4884-9c28-6db2fc3f1cea.png)
+![LogoOdontoPrev](https://user-images.githubusercontent.com/109089136/204630124-56b537ee-4587-42f2-9cf0-5597a9821a68.png)
+
 
 
    
