@@ -1,7 +1,7 @@
 import '../lib/firebase/config.js';
 import home from '../pages/home/home.js';
-import loginDentist from '../pages/login/login-dentist.js';
-import loginPatient from '../pages/login/login-patient.js';
+import loginDentist from '../pages/login/dentist/login-dentist.js';
+import loginPatient from '../pages/login/patient/login-patient.js';
 import schedule from '../pages/schedule/schedule.js';
 import appointment from '../pages/appointment/appointment.js';
 import { getDentistas, initDados } from './storage.js';
@@ -23,6 +23,7 @@ const screens = () => {
       break;
     case '#schedule':
       main.appendChild(schedule());
+
       break;
       case '#appointment':
         main.appendChild(appointment());
