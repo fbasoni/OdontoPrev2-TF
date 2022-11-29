@@ -59,3 +59,75 @@
     margin: 0;
 }
 
+.slider {
+    width: 80%;
+    max-width: 500px;
+    height: 25vw;
+    max-height: 500px;
+    display: flex;
+    position: relative;
+    float: right;
+    margin-right: 50vh;
+    margin-top: 10vh;
+  }
+
+  .slider img{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 800ms;
+  }
+
+  .slider img.selected { 
+    opacity: 1;
+  }
+/* *{
+    margin: 0;
+    padding: 0;
+}
+.h1{
+    position: absolute;
+    width: 413.06px;
+    height: 131.74px;
+    left: 121.31px;
+    top: 140.42000000000002px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 59px;
+    display: flex;
+    align-items: center;
+    color: #001B30;
+}
+.text{
+    position: absolute;
+    width: 576.49px;
+    height: 207.66px;
+    left: 127.21000000000001px;
+    top: 241.70000000000005px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.btn-Beneficiário{
+    position: absolute;
+    width: 257.44px;
+    height: 71.4px;
+    left: 174.31px;
+    top: 707.32px;
+}
+.btn-Dentista{
+    position: absolute;
+    width: 250.84px;
+    height: 71.4px;
+    left: 475.76px;
+    top: 707.32px;
+} */
