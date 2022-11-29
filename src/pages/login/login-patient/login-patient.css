@@ -10,7 +10,8 @@
 .login-form{
   border: 5px solid black;
 }
-/* .container-login-patient {  
+
+.container-login-patient {  
   display: flex;
   margin: 9rem;
   width: 55rem;
@@ -89,4 +90,4 @@
   font-weight: bold;
   border: 0;
   box-shadow: 0px 2px 2px #000000;
-} */
+} 
