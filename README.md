@@ -71,8 +71,7 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 - Tela de agenda com as consultas marcadas
 - Alerta: para novas consultas onde eu possa aceitar ou não o agendamento
 
-### **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as
-  necessidades do usuário.
+### **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as necessidades do usuário.
 
 ### **Definição de pronto:** 
 - Passar pelo Slint
