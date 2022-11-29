@@ -32,7 +32,7 @@ export default () => {
     const patient = filterPatientByLoginAndPassword(emailPatient.value, passwordPatient.value);
     if (patient !== null) {
       const patientId = authPatients(patient.id);      
-      window.location.hash = "#appointment";  
+      window.location.hash = "#schedule";  
     } else {
       window.alert('erro');
     }
