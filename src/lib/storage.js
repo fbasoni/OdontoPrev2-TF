@@ -1,10 +1,4 @@
-export const initDados = () => {
-  createDentistsData();
-  createPatientsData();
-  createScheduleData();
-}
-
-export const getDentistas = () => {
+export const getDentists = () => {
   return JSON.parse(localStorage.getItem("dentists"));
 }
 
@@ -73,18 +67,21 @@ const createScheduleData = () => {
     dentistUid: 1,
     patientUid: null,
     time: 9,
+    date: new Date("2022/12/02").toLocaleDateString("pt-BR"),
     status: "available",
-  }
+  };
   const secondAppointment = {
-    idDentist: 1,
-    idPatient: null,
+    dentistUid: 1,
+    patientUid: null,
     time: 10,
+    date: new Date("2022/12/03").toLocaleDateString("pt-BR"),
     status: "available",
-  }
+  };
   const thirdAppointment = {
-    idDentist: 1,
-    idPatient: 1,
+    detistUid: 2,
+    patientUid: 1,
     time: 11,
+    date: new Date("2022/12/04").toLocaleDateString("pt-BR"),
     status: "confirmed",
   }
   schedulesArr.push(firstAppointment)
@@ -95,4 +92,11 @@ const createScheduleData = () => {
     JSON.stringify(schedulesArr)
   )
 }
+
+export const initData = () => {
+  createDentistsData();
+  createPatientsData();
+  createScheduleData();
+};
+
 //status possiveis: pending (pendente), available, cancelled, confirmed

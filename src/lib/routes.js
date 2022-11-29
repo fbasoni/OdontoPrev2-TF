@@ -10,7 +10,7 @@ const dentists = getDentistas();
 
 
 const main = document.querySelector('.main');
-const screens = () => {
+const initScreens = () => {
   main.innerHTML = '';
   switch (window.location.hash) {
     case '#':
@@ -35,13 +35,16 @@ const screens = () => {
 
 
 window.addEventListener('hashchange', () => {
-  screens();
+  initScreens();
 });
 
 window.addEventListener('load', () => {
-  screens();
+  initScreens();
 });
 
 if(localStorage.length==0){
-  initDados();
+  initData();
 }
+
+const dentists = getDentists();
+console.log(dentists[0].name);

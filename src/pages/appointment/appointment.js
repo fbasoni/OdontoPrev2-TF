@@ -1,10 +1,18 @@
-import data from "../../lib/data/data.js";
+//import { getDentists, getPatients, getSchedule, initDados } from "../../lib/storage.js";
 
-const dentistsData = data.dentists;
-const patientsData = data.patients;
+// if (localStorage.length == 0) {
+//   initDados();
+// }
 
-const appointmentData = data.appointment;
-console.log(dentistsData);
+// const dentistsData = getDentists();
+// const patientsData = getPatients();
+// const scheduleData = getSchedule();
+// console.log(dentistsData);
+
+// console.log(dentistsData, patientsData, scheduleData)
+// const data = [...dentistsData, ...patientsData, ...scheduleData];
+// console.log(data)
+// console.log(data[3].name)
 
 export default () => {
   const container = document.createElement("div");
@@ -30,7 +38,8 @@ export default () => {
   const appointmentInfo = container.querySelector(".appointment-info");
 
   const printAppointment = (appointments) => {
-    const appointmentTemplate = appointments.map((appointment) => {
+    const appointmentTemplate = appointments
+      .map((appointment) => {
         appointmentInfo.innerHTML = `
         <div>
           <p class="patient-name">Paciente: ${appointment.patientName}</p>
