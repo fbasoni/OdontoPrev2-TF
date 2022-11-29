@@ -1,5 +1,7 @@
 <div align="center">
-![LogoOdontoPrev](https://user-images.githubusercontent.com/109089136/204606526-c109a6e5-c2b4-4681-a449-72a28d23b1e8.png)
+![LogoOdontoPrev](https://user-images.githubusercontent.com/109089136/204624293-cef34852-5188-464f-b9de-f3e4bbf4c7e8.png)
+
+   
 # Grupo Odontoprev: líder em planos odontológicos na América Latina.
 <br>
 <p align="center"><em>Ferramentas:</em><br> 
