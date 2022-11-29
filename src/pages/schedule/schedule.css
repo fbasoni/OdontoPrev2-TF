@@ -1,0 +1,41 @@
+.main-schedule{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border: 2px solid black;
+}
+
+.scheduling-space{
+  display: flex;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
+  border: 2px solid red;
+}
+.confirm-rejected{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin: 3%;
+  border: 2px solid blueviolet;
+}
+
+.space-btn-schedule{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 2%;
+}
+
+.btn-schedule{
+  margin: 2%;
+}
+
+.box-schedule{
+  border: 2px solid blue;
+}
