@@ -1,48 +1,189 @@
-*{
+@font-face {
+    font-family: 'soleto';
+    src: url('/src/assets/fonts/Soleto_Trial_Rg.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'noto';
+    src: url('/src/assets/fonts/NotoSerif-Regular.ttf') format('truetype');
+  }
+  
+  *{
     margin: 0;
     padding: 0;
-}
-.h1{
-    position: absolute;
-    width: 413.06px;
-    height: 131.74px;
-    left: 121.31px;
-    top: 140.42000000000002px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 59px;
+    box-sizing: border-box;
+    font-family: 'soleto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+  }
+  :root{
+    --red:#d63a25;
+    --white:#fff;
+    --dark:#1e1c2a;
+  }
+  body{
+    color: rgb(42, 41, 41);
+    background: #fff;
+  }
+  .navigation{
     display: flex;
     align-items: center;
-    color: #001B30;
-}
-.text{
-    position: absolute;
-    width: 576.49px;
-    height: 207.66px;
-    left: 127.21000000000001px;
-    top: 241.70000000000005px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    font-size: 23px;
+    justify-content: space-between;
+    padding: 15px 40px;
+    box-shadow: 0 0.1rem 0.5rem rgba(2, 2, 2, 0.595);
+    width: 100%;
+    background: #0066FF;
+    transition: all 0.5s;
+    position: fixed;
+  }
+  
+  .navigation ul{
     display: flex;
     align-items: center;
-    color: black;
-}
-.btn-Beneficiário{
-    position: absolute;
-    width: 257.44px;
-    height: 71.4px;
-    left: 174.31px;
-    top: 707.32px;
-}
-.btn-Dentista{
-    position: absolute;
-    width: 250.84px;
-    height: 71.4px;
-    left: 475.76px;
-    top: 707.32px;
-}
+    gap: 5rem;
+  }
+  .navigation ul li a{
+    color: #fff;;
+    font-size: 17px;
+    transition: all 0.5s;
+  }
+  .navigation ul li a:hover{
+    text-decoration: underline;
+  }
+  
+  .menu{
+    cursor: pointer;
+    display: none;
+  }
+  .menu .bar{
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 3px;
+    margin: 5px auto;
+    transition: all 0.3s;
+    background: #fff;
+  }
+  
+  .home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10%;
+  }
+  .home-text{
+    max-width: 35rem;
+    height: 20rem;
+  }
+  
+  .home-text .text-h1{
+    font-family: 'soleto';
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 3rem;
+    width: 30rem;
+    padding-left: 3rem;
+  }
+  .home-text p{
+    font-family: 'noto';
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+    padding-left: 3rem;
+    width: 35rem;
+  }
+  .home-btn{
+    font-family: 'soleto';
+    margin-left: 3rem; 
+    padding: 13px 30px;
+    background: #fd5546;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.5s;
+  }
+  .home-btn:hover{
+    background: #ff7866;
+  }
+  
+  img{
+    display: flex;
+    align-items: center;
+    width: 500px;
+    border-radius: 30px;
+  }
+  .logo-img{
+    width: 300px;
+  }
+  
+  
+  @media (max-width:785px) {
+  
+  .logo-img{
+    width: 200px;
+  }
+    .navigation ul li a{
+        color: rgb(0, 0, 0);;
+  
+    }
+    .navigation{
+        padding: 18px 20px;
+    }
+    .menu{
+        display: block;
+    }
+    .menu.ativo .bar:nth-child(1){
+        transform:  translateY(8px) rotate(45deg);
+    }
+    .menu.ativo .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu.ativo .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        background: #fff;
+        gap: -10px;
+        transition: 0.3s;
+    }
+    .nav-menu.ativo{
+        right: 0;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    /*main*/
+    .home{
+        padding: 100px 2%;
+        flex-direction: column;
+        text-align: center;
+        gap: 5rem;
+    }
+    
+    .home .text-h1{
+        font-size: 2.5rem;
+        line-height: 3rem;
+        padding-right: 5rem;
+    }
+    .home p{
+        font-size: 15px;
+       width: 400px;
+    }
+  
+    img{
+        width: 380px;
+    }
+  
+    .home-btn{
+        padding: 10px;
+    }
+  }
+  
+  
