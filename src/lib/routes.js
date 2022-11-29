@@ -6,6 +6,8 @@ import schedule from '../pages/schedule/schedule.js';
 import appointment from '../pages/appointment/appointment.js';
 import { getDentistas, initDados } from './storage.js';
 
+const dentists = getDentistas();
+
 
 const main = document.querySelector('.main');
 const screens = () => {
@@ -23,7 +25,6 @@ const screens = () => {
       break;
     case '#schedule':
       main.appendChild(schedule());
-
       break;
       case '#appointment':
         main.appendChild(appointment());
