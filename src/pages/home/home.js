@@ -16,6 +16,11 @@ export default () => {
     `;
   container.innerHTML = template; 
 
+  
+ const home = container.querySelector('.h1');
+ home.addEventListener('click', () =>{
+  window.location.hash = '#schedule';
+ })
 
   return container;
 };

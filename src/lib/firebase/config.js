@@ -3,7 +3,7 @@ import {
   getFirestore,
   getAuth,
   GoogleAuthProvider,
-} from "./export.js";
+} from "./exports.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA2xvKqr0pAWau2D1JPv6G9JiGskUvLUsA",
