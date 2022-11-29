@@ -6,7 +6,6 @@ export default () => {
     <div class="login-logo">
       <img class="logo-login" src="./assets/logo/logo-art.svg" alt="logo">
     </div>
-
     <form class="login-form">
       <p class="welcome">Bem-vindo de volta!</p>
       <input type="email" placeholder="Digite seu e-mail" id="input-email" class="input-login-patient">
