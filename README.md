@@ -13,7 +13,6 @@
   <br>
 <code><img alt="nodejs" height="26" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
 <code><img alt="git" height="30" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
-<code><img alt="trello" height="25" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png"></code>
 <code><img alt="figma" height="25" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"></code></p>
 <br>
 </div>
