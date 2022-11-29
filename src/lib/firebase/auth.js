@@ -5,4 +5,4 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   onAuthStateChanged,
-} from "./export.js";
+} from "./exports.js";

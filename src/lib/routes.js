@@ -1,12 +1,13 @@
+import '../lib/firebase/config.js';
 import home from '../pages/home/home.js';
-import loginDentist from '../pages/login/login-dentist.js';
-import loginPatient from '../pages/login/login-patient.js';
+import loginDentist from '../pages/login/dentist/login-dentist.js';
+import loginPatient from '../pages/login/patient/login-patient.js';
 import schedule from '../pages/schedule/schedule.js';
 import appointment from '../pages/appointment/appointment.js';
-
+import { getDentists, initData } from './storage.js';
 
 const main = document.querySelector('.main');
-const screens = () => {
+const initScreens = () => {
   main.innerHTML = '';
   switch (window.location.hash) {
     case '#':
@@ -21,6 +22,7 @@ const screens = () => {
       break;
     case '#schedule':
       main.appendChild(schedule());
+
       break;
       case '#appointment':
         main.appendChild(appointment());
@@ -31,9 +33,16 @@ const screens = () => {
 
 
 window.addEventListener('hashchange', () => {
-  screens();
+  initScreens();
 });
 
 window.addEventListener('load', () => {
-  screens();
+  initScreens();
 });
+
+if(localStorage.length==0){
+  initData();
+}
+
+const dentists = getDentists();
+console.log(dentists[0].name);
