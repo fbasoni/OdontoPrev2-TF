@@ -5,89 +5,94 @@ export const initDados = () => {
 }
 
 export const getDentistas = () => {
-  return JSON.parse(localStorage.getItem("dentists"))
+  return JSON.parse(localStorage.getItem("dentists"));
 }
 
 export const getPatients = () => {
-  return JSON.parse(localStorage.getItem("patients"))
+  return JSON.parse(localStorage.getItem("patients"));
 }
 
 export const getSchedule = () => {
-  return JSON.parse(localStorage.getItem("schedule"))
+  return JSON.parse(localStorage.getItem("schedule"));
 }
 
 const createDentistsData = () => {
-  const tabelaDentista = []
-  const dentistaJuliene = {
-    id: 1,
-    nome: "Juliene",
-    bairro: "Ipiranga",
+  const dentistsArr = [];
+  const dentistJuliene = {
+    uid: 1,
+    name: "Juliene",
+    state: "São Paulo",
+    city: "São Paulo",
+    district: "Ipiranga",
     email: "julienefjs@hotmail.com",
-    senha: "123456",
-  }
-  const dentistaAriane = {
-    id: 2,
-    nome: "Ariane",
-    bairro: "Centro",
+    password: "123456",
+  };
+  const dentistAriane = {
+    uid: 2,
+    name: "Ariane",
+    state: "Paraná",
+    city: "Curitiba",
+    district: "Centro",
     email: "ariane@hotmail.com",
-    senha: "123456",
-  }
-  tabelaDentista.push(dentistaJuliene)
-  tabelaDentista.push(dentistaAriane)
+    password: "123456",
+  };
+  dentistsArr.push(dentistJuliene)
+  dentistsArr.push(dentistAriane)
   localStorage.setItem(
     "dentists",
-    JSON.stringify(tabelaDentista)
+    JSON.stringify(dentistsArr)
   )
 }
 
 const createPatientsData = () => {
-  const tablePatients = []
+  const patientsArr = []
   const patientTamyres = {
-    id: 1,
-    nome: "Tamyres",
+    uid: 123,
+    name: "Tamyres",
     email: "tamyres@hotmail.com",
-    senha: "123456",
+    password: "123456",
   }
   const patientFabiany = {
-    id: 2,
-    nome: "Fabiany",
+    uid: 231,
+    name: "Fabiany",
     email: "fabiany@hotmail.com",
-    senha: "123456",
+    password: "123456",
   }
-  tablePatients.push(patientTamyres)
-  tablePatients.push(patientFabiany)
+  patientsArr.push(patientTamyres)
+  patientsArr.push(patientFabiany)
 
   localStorage.setItem(
     "patients",
-    JSON.stringify(tablePatients)
+    JSON.stringify(patientsArr)
   )
 }
 
 const createScheduleData = () => {
-  const tableSchedule = []
-  const scheduleNineHours = {
+  const schedulesArr = []
+  const firstAppointment = {
+    dentistUid: 1,
+    patientUid: null,
+    time: 9,
+    status: "available",
+  }
+  const secondAppointment = {
     idDentist: 1,
     idPatient: null,
-    hour: 9,
-    typeHour: "free",
+    time: 10,
+    status: "available",
   }
-  const scheduleTenHours = {
-    idDentist: 1,
-    idPatient: null,
-    hour: 10,
-    typeHour: "free",
-  }
-  const scheduleElevenHours = {
+  const thirdAppointment = {
     idDentist: 1,
     idPatient: 1,
-    hour: 11,
-    typeHour: "confirmed",
+    time: 11,
+    status: "confirmed",
   }
-  tableSchedule.push(scheduleNineHours)
-  tableSchedule.push(scheduleTenHours)
-  tableSchedule.push(scheduleElevenHours)
+  schedulesArr.push(firstAppointment)
+  schedulesArr.push(secondAppointment)
+  schedulesArr.push(thirdAppointment)
   localStorage.setItem(
     "schedule",
-    JSON.stringify(tableSchedule)
+    JSON.stringify(schedulesArr)
   )
 }
+//status possiveis: pending (pendente), available, cancelled, confirmed
