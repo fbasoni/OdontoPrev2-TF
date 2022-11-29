@@ -1,10 +1,4 @@
-export const initDados = () => {
-  createDentistsData();
-  createPatientsData();
-  createScheduleData();
-}
-
-export const getDentistas = () => {
+export const getDentists = () => {
   return JSON.parse(localStorage.getItem("dentists"));
 }
 
@@ -95,4 +89,11 @@ const createScheduleData = () => {
     JSON.stringify(schedulesArr)
   )
 }
+
+export const initData = () => {
+  createDentistsData();
+  createPatientsData();
+  createScheduleData();
+};
+
 //status possiveis: pending (pendente), available, cancelled, confirmed
