@@ -1,3 +1,5 @@
+import { authPatients, filterPatientByLoginAndPassword } from "../../../lib/storage.js";
+
 export default () => {
   const containerLoginPatient = document.createElement('div');
   containerLoginPatient.classList.add('container-login-patient')    
@@ -27,7 +29,13 @@ export default () => {
   const btnLoginPatient = containerLoginPatient.querySelector('#btn-login-patient');
 
   btnLoginPatient.addEventListener('click', () => {
-    window.location.hash = '#appointment'  
+    const patient = filterPatientByLoginAndPassword(emailPatient.value, passwordPatient.value);
+    if (patient !== null) {
+      const patientId = authPatients(patient.id);      
+      window.location.hash = "#appointment";  
+    } else {
+      window.alert('erro');
+    }
   })
 
     
