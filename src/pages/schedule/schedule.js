@@ -1,4 +1,4 @@
-import { getAuthPatient } from "../../lib/storage.js";
+import { getAuthPatient, getSchedule } from "../../lib/storage.js";
 
 export default () => {
   const container = document.createElement('div');    
@@ -18,24 +18,31 @@ export default () => {
         </div>
 
         <div class="schedule-dentist">
-        <ul class="weekdays"> 
-          <li>Segunda-Feira</li> 
-            <li> </li>
-          <li>Terça-Feira</li> 
-            <li> </li>
-          <li>Quarta-Feira</li>
-            <li> </li> 
-          <li>Quinta-Feira</li> 
-            <li> </li>         
+        <ul class="weekdays">       
         </ul> 
         </div>
       </section>
     `;
   container.innerHTML = template; 
 
+  const table = container.querySelector(".weekdays");
+
   const patient = getAuthPatient()
   console.log(patient.uid)
+  const schedule = getSchedule();
+  
+  const printSchedule = (schedules) => {
+    const scheduleTable = [schedules].forEach((schedule) => {
+      schedule.map((time) => {
+        table.innerHTML += `
+          <li class="patient-name">Segunda-feira: ${time.time}:00</li>
+        `
+      })
+    })
+    return scheduleTable;
+  };
 
+  printSchedule(schedule);
 
   return container;
 };
