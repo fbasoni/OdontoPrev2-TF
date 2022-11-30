@@ -106,7 +106,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistRodolfo = {
-    uid: 2,
+    uid: 3,
     name: "Rodolfo Alves",
     state: "Rio de Janeiro",
     city: "Rio de Janeiro",
@@ -116,7 +116,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistAna = {
-    uid: 2,
+    uid: 4,
     name: "Ana Marques",
     state: "São Paulo",
     city: "Osasco",
@@ -126,7 +126,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistCarlos = {
-    uid: 2,
+    uid: 5,
     name: "Carlos Augusto Silva",
     state: "Paraná",
     city: "Curitiba",

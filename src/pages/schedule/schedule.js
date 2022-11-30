@@ -6,12 +6,11 @@ import {
   getDentists,
 } from "../../lib/storage.js";
 
-const patientsData= getAuthPatient();
-const dentistsData = getDentists();
-// console.log(dentistsData);
-// console.log(patientsData);
 
 export default () => {
+  const patientsData= getAuthPatient();
+  const dentistsData = getDentists();
+
   const container = document.createElement('div');    
   const template = `    
   <div class="my-schedule main-page-schedule">
@@ -35,35 +34,42 @@ export default () => {
 
   const table = container.querySelector(".weekdays");
   const tablePatient = container.querySelector(".sheduling-confirmed")
-
+  
   const patient = getAuthPatient()
-  console.log(patient.uid)
-  const schedule = getSchedule();
+  
   
   const printSchedule = () => {
-      schedule.filter((time) => time.status == 'available').forEach((time) => {
+    table.innerHTML = '';
+    const schedule = getSchedule();
+    dentistsData.forEach((dentist) => {
+      table.innerHTML +=`<p> ${dentist.name}</p>`
+      schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
         table.innerHTML += `
           <li data-id=${time.id} class="schedule-date">${convertData(time.date)} :${
             time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
           }</li>
      `;
     })
+
+    })
+      
     const linhas = table.querySelectorAll(".schedule-date");
     linhas.forEach((linha) => {
       linha.addEventListener("click", (e) => {
         const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
         scheduleAppointment(id, patient.uid)
+        printSchedule();
         console.log(id);
       });
     })
   };
 
-  printSchedule(schedule);
+  printSchedule();
  
   // template da agenda do beneficiário
   const printSchedulePatient = () => {  
-    const templatePatients = schedule
+    const templatePatients = getSchedule()
       .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed" )
       .map((time) => {
         const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);

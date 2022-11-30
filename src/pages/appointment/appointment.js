@@ -1,12 +1,12 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
 import { convertData } from "../../lib/convert.js";
 
+
+export default () => {
 const dentistAuth = getAuthDentist();
-const dentists = getDentists();
 const schedules = getSchedule();
 const patients = getPatients(); 
 
-export default () => {
   const container = document.createElement("div");
   const template = `    
         <div class="appointment-container">
