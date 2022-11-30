@@ -1,19 +1,21 @@
-export const convertData = (date) => {
-  const day = new Date(date).getDay();
+export const convertData = (dateString) => {
+  const date = new Date(dateString)
+  const day = date.getDay();
+  const ptBr = date.toLocaleDateString('pt-br');
   switch (day) {
     case 0:
-      return "Domingo";
+      return `${ptBr} Domingo`;
     case 1:
-      return "Segunda";
+      return `${ptBr} Segunda`;
     case 2:
-      return "Terça";
+      return `${ptBr} Terça`;
     case 3:
-      return "Quarta";
+      return `${ptBr} Quarta`;
     case 4:
-      return "Quinta";
+      return `${ptBr} Quinta`;
     case 5:
-      return "Sexta";
+      return `${ptBr} Sexta`;
     case 6:
-      return "Sábado";
+      return `${ptBr} Sábado`;
   }
 }

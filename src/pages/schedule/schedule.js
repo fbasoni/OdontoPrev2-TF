@@ -5,41 +5,42 @@ import {
   scheduleAppointment,
 } from "../../lib/storage.js";
 
+const patientsData= getAuthPatient();
+console.log(patientsData);
+
 export default () => {
   const container = document.createElement('div');    
   const template = `    
-      <div class=mySchedule>
+  <div class="my-schedule main-page-schedule">
+    <div class="scheduling-patient">
       <p>Meus próximos agendamentos</p>
-      <div class=my-appointments></div>
-        <button class="btn-localization" id="localization-btn">Localização</button>
-        <button class="btn-localization" id="localization-btn">Cancelar Agendamento</button>
+      <div class="scheduling">
+        <ul class="sheduling-confirmed">       
+        </ul>        
       </div>
-
-      <section class="filter-dentist">
-        <input type="text" class="input-filter-dentist" id="filter-dentist-input">
-        <div class="info-dentist id="dentist-info">
-        <p class="name-dentist" id="id-name-dentist"></p>
-        <p class="address-dentist" id="id-address-dentist"></p>
-        </div>
-
-        <div class="schedule-dentist">
+    </div>
+    <section class="filter-dentist">
+      <input type="text" class="input-filter-dentist" id="filter-dentist-input">
+      <input type="text" class="input-filter-localization" id="filter-localization-input">
+      <div class="schedule-dentist">
         <ul class="weekdays">       
-        </ul> 
-        </div>
+        </ul>     
       </section>
+  </div>
     `;
   container.innerHTML = template; 
 
   const table = container.querySelector(".weekdays");
+  const tablePatient = container.querySelector(".sheduling-confirmed")
 
   const patient = getAuthPatient()
   console.log(patient.uid)
   const schedule = getSchedule();
   
   const printSchedule = () => {
-      schedule.forEach((time) => {
+      schedule.filter((time) => time.status == 'available').forEach((time) => {
         table.innerHTML += `
-          <li data-id=${time.id} class="schedule-date"> ${convertData(time.date)} :${
+          <li data-id=${time.id} class="schedule-date">${convertData(time.date)} :${
             time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
           }</li>
      `;
@@ -56,6 +57,23 @@ export default () => {
   };
 
   printSchedule(schedule);
+ 
+  // template da agenda do beneficiário
+  const printSchedulePatient = () => {
+    const templatePatients = schedule
+      .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed" )
+      .map((time) => {
+        return  `
+        <li data-id=${time.id} class="schedule-date">${convertData(time.date)} 
+          <button class="btn-localization" id="localization-btn">Localização</button>
+          <button class="btn-localization" id="localization-btn">Cancelar Agendamento</button>
+        </li>
+   `;
+  })
+  tablePatient.innerHTML += templatePatients;
+};
+
+ printSchedulePatient();
 
   return container;
 };
