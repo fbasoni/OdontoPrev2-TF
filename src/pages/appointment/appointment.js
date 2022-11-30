@@ -17,7 +17,7 @@ export default () => {
           </span>
           <section class="schedule">
             <h1>Agenda de consultas</h1>
-            <button class="confirmed-appointments" data-status="${schedules.status == 'confirmed'}>Confirmadas</button>
+            <button class="confirmed-appointments">Confirmadas</button>
             <button class="pending-appointments">Pendentes</button>
             <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
@@ -29,44 +29,64 @@ export default () => {
 
   //const appointmentInfo = container.querySelector(".appointment-info");
   const confirmedButton = container.querySelector(".confirmed-appointments");
-  const pendingButton = container.querySelector(".pending-button");
+  const pendingButton = container.querySelector(".pending-appointments");
   const appointmentsList = container.querySelector(".appointment-info");
 
-  const printAppointment = () => {  
+  const printConfirmedAppointment = () => {  
     const templatePatients = schedules
-    .filter((schedule) => schedule.dentistUid === dentistAuth.uid)
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'confirmed')
       .map((schedule) => {
         const patient = patients.find((patient) => patient.uid == schedule.patientUid);
         console.log(patient)
-        if(schedule.status === "confirmed") {
+
           return `
-          <div class="confirmed-appointments hide">
-            <p>CONFIRMADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+          <div class="confirmed-appointments-list hide">
+            <p class="confirmed-title">CONFIRMADA</p>
             <p class="patient-name">Paciente:${patient.name}</p>
             <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
             <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
           </div>
-        ` 
-        } else if (schedule.status === "pending") {
-          return `
-          <div class="pending-appointments hide">
-            <p>PENDENTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
-            <p class="patient-name">Paciente:${patient.name}</p>
-            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
-            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
-          </div>
-        `;
-        }
-        
+        `
       }).join("");
     appointmentsList.innerHTML += templatePatients;
   }
 
-  confirmedButton.addEventListener(() => {
-    
-  })
+   const printPendingAppointment = () => {  
+    const templatePatients = schedules
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'pending')
+      .map((schedule) => {
+        const patient = patients.find((patient) => patient.uid == schedule.patientUid);
+        console.log(patient)
 
-  printAppointment();
+          return `
+          <div class="pending-appointments-list hide">
+            <p class="pending-title">PENDENTE</p>
+            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
+            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+          </div>
+        `
+      }).join("");
+    appointmentsList.innerHTML += templatePatients;
+  }
+    
+  printConfirmedAppointment();
+  printPendingAppointment();
+
+  confirmedButton.addEventListener('click', () => {
+    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
+    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
+    
+    pendingAppointments.classList.add('hide');
+    confirmedAppointments.classList.remove('hide');
+  });
+
+  pendingButton.addEventListener('click', () => {
+    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
+    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
+    confirmedAppointments.classList.add('hide');
+    pendingAppointments.classList.remove('hide');
+  });
 
   return container;
 };
