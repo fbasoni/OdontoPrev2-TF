@@ -1,4 +1,8 @@
 import { authDentists, filterDentistByLoginAndPassword } from "../../../lib/storage.js";
+import {
+  validateEmail,
+  validatePassword,
+} from "../../../lib/data/validation.js";
 
 export default () => {
   const containerLoginDentist = document.createElement('div');    
@@ -24,7 +28,7 @@ export default () => {
         <input type="email" placeholder="Digite seu e-mail" id="input-email" class="input-login-dentist">
         <input type="password" placeholder="Digite sua senha" id="input-password" class="input-login-dentist">
         <a href="" class="forgot-password" id="id-forgot-password">Esqueci minha senha</a>
-        <p class="error-message-text" id="error-message"></p>
+        <p id="error-message" class="error-message"></p>
         <p class="text-dentist-login">Ainda não é um dentista OdontoPrev?</p>
         <a href="" class="btn-register">Cadastra-se</a>
         <button id="btn-login-dentist" class="login-dentist-btn">Entrar</button>
@@ -37,19 +41,26 @@ export default () => {
   const emailDentist = containerLoginDentist.querySelector('#input-email');
   const passwordDentist = containerLoginDentist.querySelector('#input-password');
   const btnLoginDentist = containerLoginDentist.querySelector('#btn-login-dentist');
+  const errorMessage = containerLoginDentist.querySelector("#error-message");
 
   btnLoginDentist.addEventListener("click", () => {
-    const dentist = filterDentistByLoginAndPassword(
-      emailDentist.value,
-      passwordDentist.value
-    );
-    
-    if (dentist !== null) {
-      authDentists(dentist.uid);
-      console.log(dentist.uid);
-      window.location.hash = "#appointment";
+
+    const dentist = filterDentistByLoginAndPassword(emailDentist.value, passwordDentist.value);
+    const emailValidation = validateEmail(emailDentist.value);
+    const passwordValidation = validatePassword(passwordDentist.value);
+    if (emailValidation) {
+      errorMessage.innerHTML = emailValidation;
+    } else if (passwordValidation) {
+      errorMessage.innerHTML = passwordValidation;
     } else {
-      window.alert("erro");
+      if (dentist !== null) {
+        authDentists(dentist.uid);
+        console.log(dentist.uid);
+        window.location.hash = "#schedule";
+      } else {
+        errorMessage.innerHTML =
+        "Conta não cadastrada. Entre com as credenciais disponibilizadas no readme.";
+      }
     }
   });
 
