@@ -3,7 +3,7 @@ import { convertData } from "../../lib/convert.js";
 
 const dentistAuth = getAuthDentist();
 const dentists = getDentists();
-const schedule = getSchedule();
+const schedules = getSchedule();
 const patients = getPatients(); 
 
 export default () => {
@@ -17,9 +17,9 @@ export default () => {
           </span>
           <section class="schedule">
             <h1>Agenda de consultas</h1>
-            <button class="confirmed-appointments">Confirmadas</button>
+            <button class="confirmed-appointments" data-status="${schedules.status == 'confirmed'}>Confirmadas</button>
             <button class="pending-appointments">Pendentes</button>
-            <span class="appointment-status">${schedule.status === "confirmed" ? `<p>Consultas confirmadas</p>` : `<p>Consultas pendentes</p>`}</span>
+            <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
             </div>
           </section>
@@ -33,21 +33,38 @@ export default () => {
   const appointmentsList = container.querySelector(".appointment-info");
 
   const printAppointment = () => {  
-    const templatePatients = schedule
-    .filter((time) => time.dentistUid === dentistAuth.uid)
-      .map((time) => {
-        const patient = patients.find((patient) => patient.uid == time.patientUid);
+    const templatePatients = schedules
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid)
+      .map((schedule) => {
+        const patient = patients.find((patient) => patient.uid == schedule.patientUid);
         console.log(patient)
-        return  `
-        <div class="appointment-info-div">
-         <p class="patient-name">Paciente:${patient.name}</p>
-         <p class="appointment-date">Dia da consulta: ${convertData(time.date)}</p>
-          <p class="appointment-time">Horário da consulta: ${time.time}:00</p>
-        </div>
+        if(schedule.status === "confirmed") {
+          return `
+          <div class="confirmed-appointments hide">
+            <p>CONFIRMADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
+            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+          </div>
+        ` 
+        } else if (schedule.status === "pending") {
+          return `
+          <div class="pending-appointments hide">
+            <p>PENDENTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
+            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+          </div>
         `;
+        }
+        
       }).join("");
     appointmentsList.innerHTML += templatePatients;
   }
+
+  confirmedButton.addEventListener(() => {
+    
+  })
 
   printAppointment();
 
