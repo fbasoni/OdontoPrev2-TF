@@ -3,9 +3,12 @@ import {
   getAuthPatient,
   getSchedule,
   scheduleAppointment,
+  getDentists,
 } from "../../lib/storage.js";
 
 const patientsData= getAuthPatient();
+const dentistsData = getDentists();
+console.log(dentistsData);
 console.log(patientsData);
 
 export default () => {
@@ -59,18 +62,22 @@ export default () => {
   printSchedule(schedule);
  
   // template da agenda do beneficiário
-  const printSchedulePatient = () => {
+  const printSchedulePatient = () => {  
     const templatePatients = schedule
       .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed" )
       .map((time) => {
+        const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);
         return  `
-        <li data-id=${time.id} class="schedule-date">${convertData(time.date)} 
+        <li data-id=${time.id} class="schedule-date">${convertData(time.date)} ${time.time}hr.
+          Dr. ${dentist.name}
           <button class="btn-localization" id="localization-btn">Localização</button>
           <button class="btn-localization" id="localization-btn">Cancelar Agendamento</button>
         </li>
    `;
   })
   tablePatient.innerHTML += templatePatients;
+
+  
 };
 
  printSchedulePatient();
