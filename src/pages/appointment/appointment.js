@@ -1,9 +1,10 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
 import { convertData } from "../../lib/convert.js";
 
+const dentistAuth = getAuthDentist();
 const dentists = getDentists();
 const schedule = getSchedule();
-const patients = getPatients();
+const patients = getPatients(); 
 
 export default () => {
   const container = document.createElement("div");
@@ -11,7 +12,7 @@ export default () => {
         <div class="appointment-container">
           <span class="dentist-info">
             <img src="./assets/icons/others/user-female.svg" alt="dentist picture">
-            <p class="dentist-name">Dra. ${dentists.name}</p>
+            <p class="dentist-name">Dra. ${dentistAuth.name}</p>
             <p class="dentist-cro">abcd1234</p>
           </span>
           <section class="schedule">
@@ -26,26 +27,29 @@ export default () => {
       `;
   container.innerHTML = template;
 
-  const appointmentInfo = container.querySelector(".appointment-info");
+  //const appointmentInfo = container.querySelector(".appointment-info");
   const confirmedButton = container.querySelector(".confirmed-appointments");
   const pendingButton = container.querySelector(".pending-button");
+  const appointmentsList = container.querySelector(".appointment-info");
 
-  const printAppointment = (appointments) => {
-
-    const appointmentTemplate = appointments.map((appointment) => {
-        appointmentInfo.innerHTML += `
-        <div>
-          <p class="patient-name">Paciente: ${appointment.patientName}</p>
-          <p class="appointment-date">Dia da consulta: ${convertData(appointment.date)}</p>
-          <p class="appointment-time">Horário da consulta: ${appointment.time}:00</p>
+  const printAppointment = () => {  
+    const templatePatients = schedule
+    .filter((time) => time.dentistUid === dentistAuth.uid)
+      .map((time) => {
+        const patient = patients.find((patient) => patient.uid == time.patientUid);
+        console.log(patient)
+        return  `
+        <div class="appointment-info-div">
+         <p class="patient-name">Paciente:${patient.name}</p>
+         <p class="appointment-date">Dia da consulta: ${convertData(time.date)}</p>
+          <p class="appointment-time">Horário da consulta: ${time.time}:00</p>
         </div>
         `;
-      })
-      .join(""); 
-    return appointmentTemplate;
-  };
+      }).join("");
+    appointmentsList.innerHTML += templatePatients;
+  }
 
-  printAppointment(schedule);
+  printAppointment();
 
   return container;
 };
