@@ -1,12 +1,12 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
 import { convertData } from "../../lib/convert.js";
 
-const dentistAuth = getAuthDentist();
-const dentists = getDentists();
-const schedule = getSchedule();
-const patients = getPatients(); 
 
 export default () => {
+const dentistAuth = getAuthDentist();
+const schedules = getSchedule();
+const patients = getPatients(); 
+
   const container = document.createElement("div");
   const template = `    
         <div class="appointment-container">
@@ -19,7 +19,7 @@ export default () => {
             <h1>Agenda de consultas</h1>
             <button class="confirmed-appointments">Confirmadas</button>
             <button class="pending-appointments">Pendentes</button>
-            <span class="appointment-status">${schedule.status === "confirmed" ? `<p>Consultas confirmadas</p>` : `<p>Consultas pendentes</p>`}</span>
+            <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
             </div>
           </section>
@@ -29,27 +29,64 @@ export default () => {
 
   //const appointmentInfo = container.querySelector(".appointment-info");
   const confirmedButton = container.querySelector(".confirmed-appointments");
-  const pendingButton = container.querySelector(".pending-button");
+  const pendingButton = container.querySelector(".pending-appointments");
   const appointmentsList = container.querySelector(".appointment-info");
 
-  const printAppointment = () => {  
-    const templatePatients = schedule
-    .filter((time) => time.dentistUid === dentistAuth.uid)
-      .map((time) => {
-        const patient = patients.find((patient) => patient.uid == time.patientUid);
+  const printConfirmedAppointment = () => {  
+    const templatePatients = schedules
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'confirmed')
+      .map((schedule) => {
+        const patient = patients.find((patient) => patient.uid == schedule.patientUid);
         console.log(patient)
-        return  `
-        <div class="appointment-info-div">
-         <p class="patient-name">Paciente:${patient.name}</p>
-         <p class="appointment-date">Dia da consulta: ${convertData(time.date)}</p>
-          <p class="appointment-time">Horário da consulta: ${time.time}:00</p>
-        </div>
-        `;
+
+          return `
+          <div class="confirmed-appointments-list hide">
+            <p class="confirmed-title">CONFIRMADA</p>
+            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
+            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+          </div>
+        `
       }).join("");
     appointmentsList.innerHTML += templatePatients;
   }
 
-  printAppointment();
+   const printPendingAppointment = () => {  
+    const templatePatients = schedules
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'pending')
+      .map((schedule) => {
+        const patient = patients.find((patient) => patient.uid == schedule.patientUid);
+        console.log(patient)
+
+          return `
+          <div class="pending-appointments-list hide">
+            <p class="pending-title">PENDENTE</p>
+            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
+            <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+          </div>
+        `
+      }).join("");
+    appointmentsList.innerHTML += templatePatients;
+  }
+    
+  printConfirmedAppointment();
+  printPendingAppointment();
+
+  confirmedButton.addEventListener('click', () => {
+    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
+    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
+    
+    pendingAppointments.classList.add('hide');
+    confirmedAppointments.classList.remove('hide');
+  });
+
+  pendingButton.addEventListener('click', () => {
+    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
+    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
+    confirmedAppointments.classList.add('hide');
+    pendingAppointments.classList.remove('hide');
+  });
 
   return container;
 };

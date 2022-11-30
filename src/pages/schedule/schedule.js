@@ -52,32 +52,40 @@ export default () => {
   const patient = getAuthPatient()
   const schedule = getSchedule();
 
-
+  
   const printSchedule = () => {
-    const listDentist = schedule.filter((time) => time.status == 'available')
-    listDentist.forEach((time) => {
-      const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);
-      table.innerHTML += `
-          <li data-id=${time.id} ${1}: class="schedule-date">${convertData(time.date)} :${time.status === "available" ? "<button>" + time.time + ":00" + "</button>" : ""
-        }</li>
+    table.innerHTML = '';
+    const schedule = getSchedule();
+    dentistsData.forEach((dentist) => {
+      table.innerHTML +=`<p> ${dentist.name}</p>`
+      schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
+        table.innerHTML += `
+          <li data-id=${time.id} class="schedule-date">${convertData(time.date)} :${
+            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
+          }</li>
      `;
     })
+
+    })
+      
     const linhas = table.querySelectorAll(".schedule-date");
     linhas.forEach((linha) => {
       linha.addEventListener("click", (e) => {
         const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
         scheduleAppointment(id, patient.uid)
+        printSchedule();
+        console.log(id);
       });
     })
   };
 
-  printSchedule(schedule);
-
+  printSchedule();
+ 
   // template da agenda do beneficiário
-  const printSchedulePatient = () => {
-    const templatePatients = schedule
-      .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed")
+  const printSchedulePatient = () => {  
+    const templatePatients = getSchedule()
+      .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed" )
       .map((time) => {
         const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);
         return `
