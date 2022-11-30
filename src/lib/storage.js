@@ -10,6 +10,49 @@ export const getSchedule = () => {
   return JSON.parse(localStorage.getItem("schedule"));
 }
 
+export const filterDentistByLoginAndPassword = (email, password) => {
+  const dentists = getDentists();
+  const dentistsFilter = dentists.filter((dentist) => dentist.email === email && dentist.password === password);
+  if (dentistsFilter.length > 0) {
+    return dentistsFilter[0];
+  } else return null;
+};
+
+export const authDentists = (idDentist) => {
+  return localStorage.setItem("auth-dentist", idDentist);
+};
+
+export const getAuthDentist = () => {
+  const auth = parseInt(localStorage.getItem("auth-dentist"));
+  const dentists = getDentists();
+  const dentistsFilter = dentists.filter((dentist) => dentist.uid === auth);
+  if (dentistsFilter.length > 0) {
+    return dentistsFilter[0];
+  } else return null;
+};
+
+export const filterPatientByLoginAndPassword = (email, password) => {
+  const patients= getPatients();
+  const patientsFilter = patients.filter((patient) => patient.email === email && patient.password === password);
+  if (patientsFilter.length > 0) {
+    return patientsFilter[0];
+  } else return null;
+}
+
+
+export const authPatients = (idPatient) => {   
+  return localStorage.setItem('auth-patient', idPatient);
+}
+
+export const getAuthPatient = () => {
+  const auth = parseInt(localStorage.getItem("auth-patient"));
+  const patients= getPatients();
+  const patientsFilter = patients.filter((patient) => patient.uid === auth);
+  if (patientsFilter.length > 0) {
+    return patientsFilter[0];
+  } else return null;
+}
+
 const createDentistsData = () => {
   const dentistsArr = [];
   const dentistJuliene = {
@@ -64,24 +107,27 @@ const createPatientsData = () => {
 const createScheduleData = () => {
   const schedulesArr = []
   const firstAppointment = {
-    dentistUid: 1,
+    dentistUid: 2,
     patientUid: null,
+    patientName: "Joana Augusta",
     time: 9,
-    date: new Date("2022/12/02").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/02"),
     status: "available",
   };
   const secondAppointment = {
-    dentistUid: 1,
+    dentistUid: 2,
     patientUid: null,
+    patientName: "Maria Fernanda",
     time: 10,
-    date: new Date("2022/12/03").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/03"),
     status: "available",
   };
   const thirdAppointment = {
     detistUid: 2,
     patientUid: 1,
+    patientName: "João Silva",
     time: 11,
-    date: new Date("2022/12/04").toLocaleDateString("pt-BR"),
+    date: new Date("2022/12/04"),
     status: "confirmed",
   }
   schedulesArr.push(firstAppointment)
