@@ -6,10 +6,6 @@ import {
   getDentists,
 } from "../../lib/storage.js";
 
-const patientsData = getAuthPatient();
-const dentistsData = getDentists();
-
-
 export default () => {
   const container = document.createElement('div');
   const template = `    
@@ -35,6 +31,8 @@ export default () => {
     `;
   container.innerHTML = template;
 
+  const patientsData = getAuthPatient();
+  const dentistsData = getDentists();
   const table = container.querySelector(".weekdays");
   const tablePatient = container.querySelector(".scheduling-confirmed")
   const menuStates = container.querySelector('#select-states');
@@ -50,7 +48,7 @@ export default () => {
 
   extractStates(dentistsData);
 
-  
+
   const patient = getAuthPatient()
   const schedule = getSchedule();
 
@@ -97,14 +95,15 @@ export default () => {
 
   printSchedulePatient();
 
+  // template 
 
-    menuStates.addEventListener('change', () => {
-      const state = menuStates.value;
-      console.log(state)
-      const result = dentistsData.filter((dentist) => dentist.state == state.value)
-      console.log(result)
-      const states = printSchedule(result);
-      table.innerHTML = states;
+  menuStates.addEventListener('change', () => {
+    const state = menuStates.value;
+    console.log(state)
+    const result = dentistsData.filter((dentist) => dentist.state == state)
+    console.log(result)
+    const states = printSchedule(result);
+    table.innerHTML = states;
   });
 
   return container;
