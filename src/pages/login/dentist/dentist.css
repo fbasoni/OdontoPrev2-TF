@@ -27,7 +27,7 @@
   width: 140px;
   height: 47px;
   color: white;
-  background-color: #e6796f;
+  background-color: #001b30;;
   margin-top: 2rem;
   font-size: 20px;
   font-weight: bold;
@@ -47,7 +47,7 @@
 }
 
 .login-dentist-btn:hover {
-  background-color: #a74f47;
+  background-color: #003863;
   transition: 1.5s;
   cursor: pointer;
 }
@@ -108,4 +108,14 @@
 .logo-img {
   width: 150px;
   height: 150px;
+}
+
+.error-message {
+  color: #fff1f0;
+  background-color: #ff2a1778;
+  border-radius: 15px;
+  width: 18rem;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
 }

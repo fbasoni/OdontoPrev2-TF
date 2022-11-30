@@ -8,7 +8,7 @@ export default () => {
         <div class="text-title-home">
           <h1 class="h1"> Especialistas em odontologia </h1>
         </div>
-        <p class="text-home"> Grupo Odontoprev: líder em planos odontologicos na América Latina.
+        <p class="text-home">Grupo OdontoPrev: líder em planos odontologicos na América Latina.
           <br><br>
           O plano dental mais completo para você, sua família e seus colaboradores, com qualidade e segurança. 
           Um novo jeito de cuidar da sua saúde bucal.

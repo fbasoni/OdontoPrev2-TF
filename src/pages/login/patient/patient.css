@@ -64,7 +64,7 @@
   width: 140px;
   height: 47px;
   color: white;
-  background-color: #e6796f;
+  background-color: #001b30;
   font-size: 20px;
   margin-top: 2rem;
   font-weight: bold;
@@ -73,7 +73,7 @@
 }
 
 .login-patient-btn:hover {
-  background-color: #a74f47;
+  background-color: #003863;
   transition: 1.5s;
   cursor: pointer;
 }
