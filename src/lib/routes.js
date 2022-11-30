@@ -43,5 +43,3 @@ if(localStorage.length==0){
   initData();
 }
 
-const dentists = getDentists();
-console.log(dentists[0].name);

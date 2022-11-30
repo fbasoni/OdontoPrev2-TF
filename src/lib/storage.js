@@ -111,7 +111,8 @@ const createScheduleData = () => {
     patientUid: null,
     patientName: "Joana Augusta",
     time: 9,
-    date: new Date("2022/12/02"),
+    date: new Date("2022/12/05"),
+    weekday: "Segunda",
     status: "available",
   };
   const secondAppointment = {
@@ -119,7 +120,8 @@ const createScheduleData = () => {
     patientUid: null,
     patientName: "Maria Fernanda",
     time: 10,
-    date: new Date("2022/12/03"),
+    date: new Date("2022/12/06"),
+    weekday: "Terça",
     status: "available",
   };
   const thirdAppointment = {
@@ -127,17 +129,74 @@ const createScheduleData = () => {
     patientUid: 1,
     patientName: "João Silva",
     time: 11,
-    date: new Date("2022/12/04"),
+    date: new Date("2022/12/07"),
+    weekday: "Quarta",
     status: "confirmed",
-  }
+};
+const fourthAppointment = {
+    detistUid: 2,
+    patientUid: 1,
+    patientName: "João Silva",
+    time: 11,
+    date: new Date("2022/12/08"),
+    weekday: "Quinta",
+    status: "confirmed",
+  };
+  const fifthAppointment = {
+    detistUid: 2,
+    patientUid: 1,
+    patientName: "João Silva",
+    time: 11,
+    date: new Date("2022/12/09"),
+    weekday: "Sexta",
+    status: "confirmed",
+  };
   schedulesArr.push(firstAppointment)
   schedulesArr.push(secondAppointment)
   schedulesArr.push(thirdAppointment)
+  schedulesArr.push(fourthAppointment);
+  schedulesArr.push(fifthAppointment);
+
   localStorage.setItem(
     "schedule",
     JSON.stringify(schedulesArr)
   )
 }
+
+// const createScheduleData = () => {
+//   const schedulesArr = []
+//   const firstAppointment = {
+//     dentistUid: 2,
+//     patientUid: null,
+//     patientName: "Joana Augusta",
+//     time: 9,
+//     date: new Date("2022/12/02"),
+//     status: "available",
+//   };
+//   const secondAppointment = {
+//     dentistUid: 2,
+//     patientUid: null,
+//     patientName: "Maria Fernanda",
+//     time: 10,
+//     date: new Date("2022/12/03"),
+//     status: "available",
+//   };
+//   const thirdAppointment = {
+//     detistUid: 2,
+//     patientUid: 1,
+//     patientName: "João Silva",
+//     time: 11,
+//     date: new Date("2022/12/04"),
+//     status: "confirmed",
+//   }
+//   schedulesArr.push(firstAppointment)
+//   schedulesArr.push(secondAppointment)
+//   schedulesArr.push(thirdAppointment)
+//   localStorage.setItem(
+//     "schedule",
+//     JSON.stringify(schedulesArr)
+//   )
+// }
 
 export const initData = () => {
   createDentistsData();

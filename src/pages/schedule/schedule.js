@@ -30,17 +30,30 @@ export default () => {
   const patient = getAuthPatient()
   console.log(patient.uid)
   const schedule = getSchedule();
-  
+
   const printSchedule = (schedules) => {
     const scheduleTable = [schedules].forEach((schedule) => {
       schedule.map((time) => {
         table.innerHTML += `
-          <li class="patient-name">Segunda-feira: ${time.time}:00</li>
-        `
+        <li class="table">${time.date}</li>
+        <li class="table">${time.weekday}</li>
+        <li class="table">${time.time}:00</li>
+        `;
       })
     })
     return scheduleTable;
   };
+  
+  // const printSchedule = (schedules) => {
+  //   const scheduleTable = [schedules].forEach((schedule) => {
+  //     schedule.map((time) => {
+  //       table.innerHTML += `
+  //         <li class="patient-name">Segunda-feira: ${time.time}:00</li>
+  //       `
+  //     })
+  //   })
+  //   return scheduleTable;
+  // };
 
   printSchedule(schedule);
 
