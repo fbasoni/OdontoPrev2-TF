@@ -14,15 +14,15 @@ export default () => {
           Um novo jeito de cuidar da sua saúde bucal.
         </p>
         <span class="space-btn-home">
-          <button class="btn-Beneficiário btn-home">
+          <button class="btn-patients btn-home" id="btn-patients">
             Beneficiário 
           </button>
-          <button class="btn-dentist btn-home">
+          <button class="btn-dentist btn-home" id="btn-dentist">
             Dentista
           </button>
         <span>
       </div>
-      <picture class="slider">
+      <picture class="slider home-page-img">
         <img class="selected" src="assets/logo/foto.jpeg">
         <img src="assets/logo/foto2.jpeg">
         <img src="assets/logo/foto3.jpeg">
@@ -31,6 +31,17 @@ export default () => {
   </div>
     `;
   container.innerHTML = template;
+
+  const btnPatients = container.querySelector('#btn-patients');
+  const btnDentists = container.querySelector('#btn-dentist');
+
+  btnDentists.addEventListener('click', () => {
+    window.location.hash = '#login-dentist';
+  })
+
+  btnPatients.addEventListener('click', () => {
+    window.location.hash = '#login-patient';
+  })
 
   let time = 5000;
   let imageIndex = 0;
@@ -55,25 +66,6 @@ export default () => {
   console.log(start);
 
   start()
-
-  // let slideIndex = 0;
-  // carousel();
-
-  // function carousel() {
-  //   let i;
-  //   let x = container.getElementsByClassName("mySlides");
-  //   for (i = 0; i < x.length; i++) {
-  //     x[i].style.display = "none";
-  //   }
-  //   slideIndex++;
-  //   if (slideIndex > x.length) { slideIndex = 1 }
-  //   x[slideIndex - 1].style.display = "block";
-  //   setTimeout(carousel, 2000); // Change image every 2 seconds
-  // }
-
-  // setTimeout(() => {
-  //   window.location.hash = '#welcome';
-  // }, 2000);
 
   return container;
 };
