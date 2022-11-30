@@ -4,7 +4,7 @@ import loginDentist from '../pages/login/dentist/login-dentist.js';
 import loginPatient from '../pages/login/patient/login-patient.js';
 import schedule from '../pages/schedule/schedule.js';
 import appointment from '../pages/appointment/appointment.js';
-import { getDentists, initData } from './storage.js';
+import { initData } from './storage.js';
 
 const main = document.querySelector('.main');
 const initScreens = () => {

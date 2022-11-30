@@ -12,11 +12,11 @@ export const getSchedule = () => {
 
 const getScheduleById = (scheduleId) => {
   const scheduleById = getSchedule();
-  console.log(scheduleById);
+  // console.log(scheduleById);
   const filter = scheduleById.filter(
     (schedule) => schedule.id === parseInt(scheduleId)
   );
-  console.log(filter);
+  // console.log(filter);
   if (filter !== null) {
     return filter[0];
   }
@@ -198,7 +198,7 @@ const createScheduleData = () => {
   };
   const fourthAppointment = {
     id: 4,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/07"),
@@ -206,7 +206,7 @@ const createScheduleData = () => {
   };
   const fifthAppointment = {
     id: 5,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/08"),
@@ -214,7 +214,7 @@ const createScheduleData = () => {
   };
   const sixthAppointment = {
     id: 6,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/09"),
@@ -222,7 +222,7 @@ const createScheduleData = () => {
   };
   const seventhAppointment = {
     id: 7,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/12"),
@@ -239,7 +239,7 @@ const createScheduleData = () => {
 };
 
 export const initData = () => {
-  console.log("teste");
+  // console.log("teste");
   createDentistsData();
   createPatientsData();
   createScheduleData();
