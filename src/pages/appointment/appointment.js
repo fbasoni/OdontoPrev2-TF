@@ -1,4 +1,9 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
+import { convertData } from "../../lib/convert.js";
+
+const dentists = getDentists();
+const schedule = getSchedule();
+const patients = getPatients();
 
 export default () => {
   const container = document.createElement("div");
@@ -6,7 +11,7 @@ export default () => {
         <div class="appointment-container">
           <span class="dentist-info">
             <img src="./assets/icons/others/user-female.svg" alt="dentist picture">
-            <p class="dentist-name">Dra. ${dentist.name}</p>
+            <p class="dentist-name">Dra. ${dentists.name}</p>
             <p class="dentist-cro">abcd1234</p>
           </span>
           <section class="schedule">
@@ -31,7 +36,7 @@ export default () => {
         appointmentInfo.innerHTML += `
         <div>
           <p class="patient-name">Paciente: ${appointment.patientName}</p>
-          <p class="appointment-date">Dia da consulta: ${appointment.date}</p>
+          <p class="appointment-date">Dia da consulta: ${convertData(appointment.date)}</p>
           <p class="appointment-time">Horário da consulta: ${appointment.time}:00</p>
         </div>
         `;

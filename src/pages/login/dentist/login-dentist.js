@@ -56,7 +56,7 @@ export default () => {
       if (dentist !== null) {
         authDentists(dentist.uid);
         console.log(dentist.uid);
-        window.location.hash = "#schedule";
+        window.location.hash = "#appointment";
       } else {
         errorMessage.innerHTML =
         "Conta não cadastrada. Entre com as credenciais disponibilizadas no readme.";
