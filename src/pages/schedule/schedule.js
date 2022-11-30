@@ -1,4 +1,9 @@
-import { getAuthPatient, getSchedule } from "../../lib/storage.js";
+import { convertData } from "../../lib/convert.js";
+import {
+  getAuthPatient,
+  getSchedule,
+  scheduleAppointment,
+} from "../../lib/storage.js";
 
 export default () => {
   const container = document.createElement('div');    
@@ -30,30 +35,25 @@ export default () => {
   const patient = getAuthPatient()
   console.log(patient.uid)
   const schedule = getSchedule();
-
-  const printSchedule = (schedules) => {
-    const scheduleTable = [schedules].forEach((schedule) => {
-      schedule.map((time) => {
-        table.innerHTML += `
-        <li class="table">${time.date}</li>
-        <li class="table">${time.weekday}</li>
-        <li class="table">${time.time}:00</li>
-        `;
-      })
-    })
-    return scheduleTable;
-  };
   
-  // const printSchedule = (schedules) => {
-  //   const scheduleTable = [schedules].forEach((schedule) => {
-  //     schedule.map((time) => {
-  //       table.innerHTML += `
-  //         <li class="patient-name">Segunda-feira: ${time.time}:00</li>
-  //       `
-  //     })
-  //   })
-  //   return scheduleTable;
-  // };
+  const printSchedule = () => {
+      schedule.forEach((time) => {
+        table.innerHTML += `
+          <li data-id=${time.id} class="schedule-date"> ${convertData(time.date)} :${
+            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
+          }</li>
+     `;
+    })
+    const linhas = table.querySelectorAll(".schedule-date");
+    linhas.forEach((linha) => {
+      linha.addEventListener("click", (e) => {
+        const patient = getAuthPatient();
+        const id = e.currentTarget.dataset.id;
+        scheduleAppointment(id, patient.uid)
+        console.log(id);
+      });
+    })
+  };
 
   printSchedule(schedule);
 

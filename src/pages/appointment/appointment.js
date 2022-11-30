@@ -1,10 +1,4 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
-const dentist = getAuthDentist();
-const patient = getAuthPatient();
-const schedule = getSchedule();
-
-console.log(dentist.uid)
-
 
 export default () => {
   const container = document.createElement("div");
