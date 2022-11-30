@@ -8,8 +8,8 @@ import {
 
 const patientsData= getAuthPatient();
 const dentistsData = getDentists();
-console.log(dentistsData);
-console.log(patientsData);
+// console.log(dentistsData);
+// console.log(patientsData);
 
 export default () => {
   const container = document.createElement('div');    
