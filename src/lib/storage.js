@@ -206,14 +206,3 @@ const createScheduleData = () => {
     JSON.stringify(schedulesArr)
   )
 }
-
-export const initData = () => {
-  console.log('teste')
-  createDentistsData();
-  createPatientsData();
-  createScheduleData();
-};
-
-//status possiveis: pending (pendente), available, cancelled, confirmed
-//filtrar appointments pendentes que sejam do dentista logado
-//marcar consulta(paciente) tem uma logica bem parecida com a de confirmar consulta(dentista)

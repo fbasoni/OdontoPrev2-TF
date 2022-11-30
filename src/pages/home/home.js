@@ -1,26 +1,71 @@
 
 export default () => {
-  const container = document.createElement('div');    
-  const template = `    
-    <h1 class="h1"> Especialistas em odontologia </h1>
-    <p class="text"> Grupo Odontoprev: líder em planos odontologicos na América Latina.
-      O plano dental mais completo para você, sua família e seus colaboradores, com qualidade e segurança. 
-      Um novo jeito de cuidar da sua saúde bucal.
-    </p>
-    <a href='#login-patient' class="btn-Beneficiário">
-      <button>Beneficiário</button>
-    </a>
-    <a href="#login-dentist" class="btn-Dentista">
-      <button>Dentista</button>
-    </a> 
+  const container = document.createElement('div');
+  const template = `  
+  <div class="body-home">
+    <main class="container-home">
+      <div class="home-btn-text">
+        <div class="text-title-home">
+          <h1 class="h1"> Especialistas em odontologia </h1>
+        </div>
+        <p class="text-home"> Grupo Odontoprev: líder em planos odontologicos na América Latina.
+          <br><br>
+          O plano dental mais completo para você, sua família e seus colaboradores, com qualidade e segurança. 
+          Um novo jeito de cuidar da sua saúde bucal.
+        </p>
+        <span class="space-btn-home">
+          <button class="btn-patients btn-home" id="btn-patients">
+            Beneficiário 
+          </button>
+          <button class="btn-dentist btn-home" id="btn-dentist">
+            Dentista
+          </button>
+        <span>
+      </div>
+      <picture class="slider home-page-img">
+        <img class="selected" src="assets/logo/foto.jpeg">
+        <img src="assets/logo/foto2.jpeg">
+        <img src="assets/logo/foto3.jpeg">
+      </picture>
+    </main>  
+  </div>
     `;
-  container.innerHTML = template; 
+  container.innerHTML = template;
 
-  
- const home = container.querySelector('.h1');
- home.addEventListener('click', () =>{
-  window.location.hash = '#schedule';
- })
+  const btnPatients = container.querySelector('#btn-patients');
+  const btnDentists = container.querySelector('#btn-dentist');
+
+  btnDentists.addEventListener('click', () => {
+    window.location.hash = '#login-dentist';
+  })
+
+  btnPatients.addEventListener('click', () => {
+    window.location.hash = '#login-patient';
+  })
+
+  let time = 5000;
+  let imageIndex = 0;
+  let imageSelected = container.querySelectorAll('.slider img');
+  let maxImage = imageSelected.length;
+
+  const nextImage = () => {
+    imageSelected[imageIndex].classList.remove('selected');
+    console.log('dentro da função')
+    imageIndex++
+    if (imageIndex >= maxImage) {
+      imageIndex = 0;
+    }
+    imageSelected[imageIndex].classList.add('selected');
+    console.log('dentro da função nova')
+  }
+
+  const start = () => {
+    console.log('teste');
+    setInterval(() => { nextImage() }, time);
+  }
+  console.log(start);
+
+  start()
 
   return container;
 };

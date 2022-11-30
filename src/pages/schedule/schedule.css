@@ -6,7 +6,10 @@
   border: 2px solid black;
 }
 
-.scheduling-space{
+.scheduled-appointments-patients{
+  text-align: center;
+}
+/* .scheduling-space{
   display: flex;
   height: 100%;
   width: 50%;
@@ -38,4 +41,4 @@
 
 .box-schedule{
   border: 2px solid blue;
-}
+} */
