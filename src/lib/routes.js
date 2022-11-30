@@ -42,4 +42,3 @@ window.addEventListener('load', () => {
 if(localStorage.length==0){
   initData();
 }
-
