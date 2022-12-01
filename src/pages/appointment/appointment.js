@@ -1,4 +1,4 @@
-import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient } from "../../lib/storage.js";
+import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient, confirmAppointment, cancelAppointment } from "../../lib/storage.js";
 import { convertData } from "../../lib/convert.js";
 
 const dentistAuth = getAuthDentist();
@@ -21,6 +21,8 @@ export default () => {
             <button class="pending-appointments">Pendentes</button>
             <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
+
+            
             </div>
           </section>
         </div>
@@ -48,6 +50,7 @@ export default () => {
           </div>
         `
       }).join("");
+      console.log(templatePatients)
     appointmentsList.innerHTML += templatePatients;
   }
 
@@ -64,6 +67,8 @@ export default () => {
             <p class="patient-name">Paciente:${patient.name}</p>
             <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
             <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
+            <button data-id=${schedule.id} class="confirm-btn">Confirmar</button>
+            <button data-id=${schedule.id} class="cancel-btn">Cancelar</button>
           </div>
         `
       }).join("");
@@ -73,19 +78,44 @@ export default () => {
   printConfirmedAppointment();
   printPendingAppointment();
 
+  const confirmBtn = appointmentsList.querySelectorAll('.confirm-btn');
+  const cancelBtn = appointmentsList.querySelectorAll('.cancel-btn');
+  const confirmedAppointments = appointmentsList.querySelectorAll('.confirmed-appointments-list');
+  const pendingAppointments = appointmentsList.querySelectorAll('.pending-appointments-list');
+
   confirmedButton.addEventListener('click', () => {
-    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
-    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
-    
-    pendingAppointments.classList.add('hide');
-    confirmedAppointments.classList.remove('hide');
+
+    if (pendingAppointments !== null) {
+      pendingAppointments.forEach((appointment) => appointment.classList.add("hide"));
+    } 
+    if (confirmedAppointments !== null) {
+      confirmedAppointments.forEach((appointment) => appointment.classList.remove("hide"));
+    }
   });
 
-  pendingButton.addEventListener('click', () => {
-    const confirmedAppointments = appointmentsList.querySelector('.confirmed-appointments-list');
-    const pendingAppointments = appointmentsList.querySelector('.pending-appointments-list');
-    confirmedAppointments.classList.add('hide');
-    pendingAppointments.classList.remove('hide');
+  pendingButton.addEventListener("click", () => {
+     if (confirmedAppointments !== null) {
+      confirmedAppointments.forEach((appointment) => appointment.classList.add("hide"));
+     }
+     if (pendingAppointments !== null) {
+      pendingAppointments.forEach((appointment) => appointment.classList.remove("hide"));
+     }
+  });
+
+  confirmBtn.forEach((btn) => {
+    btn.addEventListener("click", (el) => {
+      const target = el.currentTarget.dataset.id;
+      console.log(target);
+      confirmAppointment(target);
+    });
+  });
+
+  cancelBtn.forEach((btn) => {
+    btn.addEventListener("click", (el) => {
+      const target = el.currentTarget.dataset.id;
+      console.log(target);
+      cancelAppointment(target);
+    });
   });
 
   return container;
