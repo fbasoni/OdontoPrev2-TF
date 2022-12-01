@@ -49,7 +49,7 @@ const patients = getPatients();
           return `
           <div class="confirmed-appointments-list hide">
             <p class="confirmed-title">CONFIRMADA</p>
-            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="appointment-name">Paciente:${patient.name}</p>
             <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
             <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
           </div>
@@ -145,6 +145,7 @@ const patients = getPatients();
             case "confirm":
               confirmAppointment(target);
               modal.style.display = 'none';
+              window.location.reload();
               break;
             case "cancel":
               modal.style.display = 'none';
@@ -159,6 +160,8 @@ const patients = getPatients();
     btn.addEventListener("click", (el) => {
       const target = el.currentTarget.dataset.id;
       cancelAppointment(target);
+      alert('Consulta foi cancelada com sucesso.')
+      window.location.reload();
     });
   });
 
