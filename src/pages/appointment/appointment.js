@@ -82,8 +82,8 @@ const patients = getPatients();
                       <p> Deseja confirmar esse agendamento?</p>
                       <div>Para o dia ${convertData(schedule.date)}</div>
                       <div>às ${schedule.time}:00h, com paciente ${patient.name}?.</div>
-                      <button class="btn-del" data-sim="true"> SIM </button>
-                      <button class="btn-del" data-nao="true"> NÃO </button>
+                      <button class="btn-del" data-action="confirm"> SIM </button>
+                      <button class="btn-del" data-action="cancel"> NÃO </button>
                     </div>
                   </div>
                 <button data-id=${schedule.id} class="cancel-btn">Cancelar</button>
@@ -134,22 +134,24 @@ const patients = getPatients();
   confirmBtn.forEach((btn) => {
       btn.addEventListener("click", (el) => {
       const target = el.currentTarget.dataset.id;
-      const targetParent = el.target.parentElement.dataset;;
+      const targetParent = el.target.parentElement.dataset;
       const modal = el.target.parentElement.querySelector('.modal');
       console.log(modal);
       if (target){
         modal.style.display = 'flex';
+        modal.addEventListener("click", (e) => {
+          const action = e.target.dataset.action;
+          switch(action){
+            case "confirm":
+              confirmAppointment(target);
+              modal.style.display = 'none';
+              break;
+            case "cancel":
+              modal.style.display = 'none';
+              break;
+          }
+        })
       } 
-      if(el.targetParent.dataset.sim){
-        const modal = el.target.parentElement.querySelector('.modal')
-        modal.style.display = 'none';
-        confirmAppointment(target);
-      }
-      if(el.targetParent.dataset.nao){
-        const modal = el.target.parentElement.querySelector('.modal');
-        modal.style.display = 'none';
-      }
-
     });
   });
 
