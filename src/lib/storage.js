@@ -22,6 +22,28 @@ const getScheduleById = (scheduleId) => {
   }
 };
 
+export const confirmAppointment = (scheduleId) => {
+  updateStatusAppointment(scheduleId, "confirmed");
+};
+
+export const cancelAppointment = (scheduleId) => {
+  updateStatusAppointment(scheduleId, 'cancelled');
+};
+
+const updateStatusAppointment = (scheduleId, status) => {
+  const schedule = getScheduleById(scheduleId);
+  schedule.status = status;
+  const scheduleList = getSchedule();
+  let schedulePosition = 0;
+  for (let i = 0; i < scheduleList.length; i++) {
+    if (scheduleList[i].id == scheduleId) {
+      schedulePosition = i;
+    }
+  }
+  scheduleList[schedulePosition] = schedule;
+  localStorage.setItem("schedule", JSON.stringify(scheduleList));
+}
+
 export const scheduleAppointment = (scheduleId, patientId) => {
   const schedule = getScheduleById(scheduleId);
   schedule.patientUid = patientId;
