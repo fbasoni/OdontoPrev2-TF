@@ -28,8 +28,8 @@
 * [4. Pesquisa de Usuário e História de usuário](#4-Pesquisa-de-Usuário-e-História-de-usuário)
 * [5. Protótipo](#5-Protótipo)
 * [6. Informações importantes do projeto](#6-Informações-importantes-do-projeto)
-* [7. Teste de Usabilidade](#6-Teste-de-Usabilidade)
-* [8. Ferramentas e Tech Skills](#7-Ferramentas-e-Tech-Skills)
+* [7. Teste de Usabilidade](#7-Teste-de-Usabilidade)
+* [8. Ferramentas e Tech Skills](#8-Ferramentas-e-Tech-Skills)
 
 ***
 
