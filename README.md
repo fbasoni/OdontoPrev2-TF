@@ -82,7 +82,7 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 
 #### Desktop
 
-![image](https://user-images.githubusercontent.com/109089136/205084475-19efb4f0-c0da-42b6-b5bd-5468c3c0c565.png)
+![image](https://user-images.githubusercontent.com/109089136/205084690-dfb0ed0c-c277-4303-ae64-e13882588b31.png)
 
 ## Alta fidelidade
 
