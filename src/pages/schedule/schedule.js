@@ -25,7 +25,7 @@ export default () => {
       <div class="schedule-dentist">
         <ul class="weekdays">       
         </ul>  
-      </div>   
+      </div>  
     </section>
   </div>
     `;
@@ -33,7 +33,7 @@ export default () => {
 
   const patientsData = getAuthPatient();
   const dentistsData = getDentists();
-  const table = container.querySelector(".weekdays");
+  const table = container.querySelector(".schedule-dentist");
   const tablePatient = container.querySelector(".scheduling-confirmed")
   const menuStates = container.querySelector('#select-states');
   // const menuSpecialties = container.querySelector('#select-states');
@@ -60,25 +60,54 @@ export default () => {
       table.innerHTML +=`<p> ${dentist.name}</p>`
       schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
         table.innerHTML += `
-          <li data-id=${time.id} class="schedule-date">${convertData(time.date)} :${
-            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
-          }</li>
+          <li data-id=${time.id} class="schedule-date"> <tr>${convertData(time.date)} </tr>:${
+            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""}
+            <div class="modal">
+              <div class="internal-modal">
+                <p> Deseja confirmar seu agendamento?</p>
+                <div>Para o dia ${convertData(time.date)}</div>
+                <div>às ${time.time}:00h.</div>
+                <div> com Dr.(a) ${dentist.name}.</div>
+                <div> Seu dentista tem o prazo de até 1 dia útil para confirmar sua consulta.</div>
+                <button class="btn-del" data-sim="true"> SIM </button>
+                <button class="btn-del" data-nao="true"> NÃO </button>
+              </div>
+            </div>
+          </li>
      `;
     })
 
-    })
-      
+    })   
     const linhas = table.querySelectorAll(".schedule-date");
     linhas.forEach((linha) => {
       linha.addEventListener("click", (e) => {
-        const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
-        scheduleAppointment(id, patient.uid)
-        printSchedule(dentistList);
-        console.log(id);
+        const modal = e.currentTarget.querySelector('.modal');
+        if (id){
+          modal.style.display = 'flex';
+        }
+        if (e.target.dataset.sim){
+          modal.style.display = 'none';
+          const patient = getAuthPatient();
+          scheduleAppointment(id, patient.uid)
+          printSchedule(dentistList);
+        }
+        if (e.target.dataset.nao){
+          modal.style.display = 'none';
+        }
       });
     })
   };
+
+  function myFunction() {
+    let text = "Deseja agendar?";
+    if (confirm(text) == true) {
+      text = "You pressed OK!";
+    } else {
+      text = "You canceled!";
+    }
+    table.innerHTML = text;
+  }
 
   printSchedule(dentistsData);
  
@@ -104,12 +133,11 @@ export default () => {
   printSchedulePatient();
 
   // template 
+  const result = []
 
   menuStates.addEventListener('change', () => {
     const state = menuStates.value;
-    console.log(state)
     const result = dentistsData.filter((dentist) => dentist.state == state)
-    console.log(result)
     printSchedule(result);
   });
 

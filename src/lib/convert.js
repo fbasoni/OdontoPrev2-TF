@@ -6,16 +6,16 @@ export const convertData = (dateString) => {
     case 0:
       return `${ptBr} Domingo`;
     case 1:
-      return `${ptBr} Segunda`;
+      return `${ptBr} Segunda-Feira`;
     case 2:
-      return `${ptBr} Terça`;
+      return `${ptBr} Terça-Feira`;
     case 3:
-      return `${ptBr} Quarta`;
+      return `${ptBr} Quarta-Feira`;
     case 4:
-      return `${ptBr} Quinta`;
+      return `${ptBr} Quinta-Feira`;
     case 5:
-      return `${ptBr} Sexta`;
+      return `${ptBr} Sexta-Feira`;
     case 6:
-      return `${ptBr} Sábado`;
+      return `${ptBr} Sábado-Feira`;
   }
 }

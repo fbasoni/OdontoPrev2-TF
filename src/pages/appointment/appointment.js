@@ -37,7 +37,7 @@ const patients = getPatients();
     .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'confirmed')
       .map((schedule) => {
         const patient = patients.find((patient) => patient.uid == schedule.patientUid);
-        console.log(patient)
+      
 
           return `
           <div class="confirmed-appointments-list hide">
