@@ -18,8 +18,10 @@ const patients = getPatients();
           </span>
           <section class="schedule">
             <h1>Agenda de consultas</h1>
+            <div class="btn-schedule">
             <button class="confirmed-appointments">Confirmadas</button>
             <button class="pending-appointments">Pendentes <div class="count-pending"></div></button>
+            </div>
             <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
 
