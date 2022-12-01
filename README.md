@@ -33,7 +33,7 @@
 
 ***
 
-## 💻 1. Resumo do Projeto
+## 1. Resumo do Projeto
 
 Este projeto foi desenvolvido para o Talent Fest 2022. No qual tivemos o objetivo de desenvolver, em parceria com a OdontoPrev, um módulo para Beneficiários e Dentistas.
 
@@ -47,7 +47,7 @@ Além disso, utilizamos o local storage, para armazenar e manipular os dados.
 Nossas projeto foi planejado conforme as necessidades apresentadas em nossas histórias de usuário - as quais foram criadas com base na nossa pesquisa de usuário. Deste modo, definimos e trabalhamos no desenvolvimento das funcionalidades de nossa aplicação com base nas necessidades dos usuários.
 
 
-## 🚀 2. Definição de produto
+## 2. Definição de produto
 
 Sabemos que principalmente após a pandemia, cada vez mais as pessoas estão recorrendo a serviços online, que tambem agiliza muito o processo.
 Como afirma um artigo científico, 72% dos pacientes buscam informações na internet antes de agendar uma consulta, ou seja, eles já estão online.[^1] E segundo pesquisas 77% dos clientes, acham que a possiblidade de agendar, alterar e cancelar um agendamento online é muito importante, enquanto 74% dos millenials (Idades entre 18 e 34 anos) valorizam o agendamento online.[^2]
@@ -55,12 +55,12 @@ Como afirma um artigo científico, 72% dos pacientes buscam informações na int
 Sendo assim, esse projeto ajudará que mais pessoas tenham acesso a facilidade que é marcar uma consulta de modo rápido online.
 
 
-## 📑 3. Planejmaneto
+## 3. Planejmaneto
 
 Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks em 'baby steps', divididas em 'to do' (por fazer), 'doing' (fazendo) e 'done' (feito).
 
 
-## 📋 4. Pesquisa de Usuário e História de usuário
+## 4. Pesquisa de Usuário e História de usuário
 
 ### Beneficiários
 - Buscar na rede dentistas próximos a mim
@@ -77,7 +77,7 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 - Códigos, nomes das divs, class, afins, tudo em inglês
 - Versionado
 
-## 🖼️ 5. Protótipo
+## 5. Protótipo
 
 ### Baixa fidelidade
 
