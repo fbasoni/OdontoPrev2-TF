@@ -4,6 +4,7 @@ import {
   getSchedule,
   scheduleAppointment,
   getDentists,
+  cancelAppointment,
 } from "../../lib/storage.js";
 
   const patient = getAuthPatient();
@@ -21,11 +22,20 @@ export default () => {
     </div>
     <h1 class="schedule-an-appointment">Agende uma consulta com nossos dentistas:</h1>
     <section class="filter-dentist">
-    <p class="findlocation">Encontre um dentista no seu estado:</p>
+        <p class="findlocation">Encontre um dentista no seu estado:</p>
+    </section>
+    <section class="filter-dentist">
       <select name="select-states" id="select-states" class="selects">
         <option value="default">Estado</option>
       </select>
-      </section>
+      <select name="select-citys" id="select-citys" class="selects">
+        <option value="default">Cidade</option>
+      </select>
+      <div class="input-label search">
+          <label  id="labelSearch">Busque pelo endereço ou nome do seu dentista </label>
+          <input  type="text" name="input-search" id="input-search" placeholder="ex: Estado, Bairro ou"/>
+      </div>
+    </section>
       
           <div class="schedule-dentist">
           </div> 
@@ -63,8 +73,6 @@ export default () => {
     menuCitys.innerHTML += templateSelect.map((city) => `<option value="${city}">${city}</option>`);
   };
   extractCitys(dentistsData);
-  // const patient = getAuthPatient()
-  // const schedule = getSchedule();
 
   
   const printSchedule = (dentistList) => {
@@ -81,6 +89,17 @@ export default () => {
                   ? `<div data-id=${time.id} class="schedule-date schedule-time">${time.time} :00 `
                   : ""
               }
+              <div class="modal modal-appointments">
+              <div class="internal-modal">
+                <p> Deseja confirmar seu agendamento?</p>
+                <div>Para o dia ${convertData(time.date)}</div>
+                <div>às ${time.time}:00h.</div>
+                <div> com Dr.(a) ${dentist.name}.</div>
+                <div> Seu dentista tem o prazo de até 1 dia útil para confirmar sua consulta.</div>
+                <button class="btn-del" data-sim="true"> SIM </button>
+                <button class="btn-del" data-nao="true"> NÃO </button>
+              </div>
+            </div>
               </div>
           </div>
 
@@ -92,6 +111,7 @@ export default () => {
                 <img src="./assets/icons/others/user.svg" class="dentist-pfp" alt="dentist picture">
               </div>
               <p class="dentist-name">Dentista: ${dentist.name}.</p>
+              <p class="dentist-name">Endereço: ${dentist.address}.</p>
             </div> 
             ${dentistsScheduleElement}
           </div>`;
@@ -135,7 +155,18 @@ export default () => {
             <p><strong>Dentista:</strong> Dra. ${dentist.name}.</p> 
             <p><strong>Local de atendimento:</strong> ${dentist.address}.</p>
           </div>
-          <button class="btn-cancel-appointment" id="btn-cancel-appointment">Cancelar Agendamento</button>
+          <div>
+            <button data-id=${time.id} class="btn-cancel-appointment" id="btn-cancel-appointment">Cancelar Agendamento</button>
+              <div class="modal">
+                <div class="internal-modal">
+                  <p> Deseja cancelar esse agendamento?</p>
+                  <div>Para ${convertData(time.date)}</div>
+                  <div>às ${time.time}:00h, com Dr(a). ${dentist.name}?</div>
+                  <button class="btn-del" data-action="confirm"> SIM </button>
+                  <button class="btn-del" data-action="cancel"> NÃO </button>
+                  </div>
+                </div>
+          </div>
         </div>
    `;
       })
@@ -145,13 +176,36 @@ export default () => {
   };
 
   printSchedulePatient();
-  //função de includes
+  
+  const cancelBtn = tablePatient.querySelectorAll('.btn-cancel-appointment');
+
+  cancelBtn.forEach((btn) => {
+    btn.addEventListener("click", (el) => {
+      const target = el.currentTarget.dataset.id;
+      const targetParent = el.target.parentElement.dataset;
+      const modal = el.target.parentElement.querySelector('.modal');
+      if (target){
+        modal.style.display = 'flex';
+        modal.addEventListener("click", (e) => {
+          const action = e.target.dataset.action;
+          switch(action){
+            case "confirm":
+              cancelAppointment(target);
+              modal.style.display = 'none';
+              break;
+            case "cancel":
+              modal.style.display = 'none';
+              break;
+          }
+        })
+      }
+    });
+  });
 
   const filterSearch = (dentists, text) =>
   dentists.filter((dentist) => dentist.address.toLowerCase().includes(text.toLowerCase()) || dentist.name.toLowerCase().includes(text.toLowerCase()));
   console.log(filterSearch);
 
-  //não esta buscando pelo nome, 
   inputSearch.addEventListener("input", () => {
     let text = inputSearch.value;
     const result = filterSearch(dentistsData, text)
