@@ -10,3 +10,31 @@
   border: 2px solid red;
 }
 
+@font-face {
+  font-family: noto;
+  src: url(/OdontoPrev2/src/assets/fonts/NotoSerif-Regular.ttf) format('truetype');
+}
+body{
+  font-family: "noto";
+}
+.teste-alinhar{
+  display: flex;
+  justify-content: center;
+}
+.schedule-dentist{
+  max-width: 400px;
+  display: flex;
+}
+table{
+ text-align: center;
+ display: flex;
+ justify-content: center;
+}
+td{
+  background-color: aqua;
+  border-radius: 30px;
+  margin-left: 30px;
+}
+tr {
+  display: flex;
+}

@@ -22,10 +22,12 @@ export default () => {
       <section class="space-detints"> 
         <ul id="box-dentists"></ul>
       </section>
-      <div class="schedule-dentist">
-        <ul class="weekdays">       
-        </ul>  
-      </div>   
+        <div class="align-table>">
+          <div class="schedule-dentist">
+            <table class="weekdays">       
+            </table>  
+          </div> 
+        </div>  
     </section>
   </div>
     `;
@@ -57,15 +59,14 @@ export default () => {
     table.innerHTML = '';
     const schedule = getSchedule();
     dentistList.forEach((dentist) => {
-      table.innerHTML +=`<p> ${dentist.name}</p>`
+      table.innerHTML += ` <div class=detist-table> <img src="./assets/icons/others/user-female.svg" alt="dentist picture"><p> ${dentist.name}</p></div>`
       schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
-        table.innerHTML += `
-          <li data-id=${time.id} class="schedule-date">${convertData(time.date)} :${
-            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""
-          }</li>
-     `;
-    })
-
+        
+        table.innerHTML += `<tr data-id=${time.id} class="schedule-date"> <td>${convertData(time.date)} </td>${
+          time.status === "available" ? "<td>"+time.time+ ":00" + "</td>" : ""
+        }
+      </tr>`
+      })   
     })
       
     const linhas = table.querySelectorAll(".schedule-date");
