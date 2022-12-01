@@ -14,13 +14,13 @@ const patients = getPatients();
           <span class="dentist-info">
             <img src="./assets/icons/others/user-female.svg" alt="dentist picture">
             <p class="dentist-name">Dra. ${dentistAuth.name}</p>
-            <p class="dentist-cro">abcd1234</p>
+            <p class="dentist-cro">12345-65 PR</p>
           </span>
           <section class="schedule">
             <h1>Agenda de consultas</h1>
-            <div class="btn-appointments">
-              <button class="confirmed-appointments">Confirmadas</button>
-              <button class="pending-appointments">Pendentes<div class="count-pending"></div></button>
+            <div class="btn-schedule">
+            <button class="confirmed-appointments">Confirmadas</button>
+            <button class="pending-appointments">Pendentes <div class="count-pending"></div></button>
             </div>            
             <div class="appointment-info">
 
@@ -103,6 +103,11 @@ const patients = getPatients();
   const pendingAppointments = appointmentsList.querySelectorAll('.pending-appointments-list');
 
   confirmedButton.addEventListener('click', () => {
+    confirmedButton.style.backgroundColor = '#003EA6'
+    confirmedButton.style.color = '#fff'
+    pendingButton.style.backgroundColor = '#fff'
+    pendingButton.style.color = '#000'
+
 
     if (pendingAppointments !== null) {
       pendingAppointments.forEach((appointment) => appointment.classList.add("hide"));
@@ -113,6 +118,10 @@ const patients = getPatients();
   });
 
   pendingButton.addEventListener("click", () => {
+    pendingButton.style.backgroundColor = '#003EA6'
+    pendingButton.style.color = '#fff'
+    confirmedButton.style.backgroundColor = '#fff'
+    confirmedButton.style.color = '#000'
      if (confirmedAppointments !== null) {
       confirmedAppointments.forEach((appointment) => appointment.classList.add("hide"));
      }
