@@ -72,7 +72,7 @@ const patients = getPatients();
           return `
           <div class="pending-appointments-list hide">
             <p class="pending-title">PENDENTE</p>
-            <p class="patient-name">Paciente:${patient.name}</p>
+            <p class="patient-name-appointment">Paciente:${patient.name}</p>
             <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
             <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
             <div>
