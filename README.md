@@ -91,7 +91,7 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 ![image](https://user-images.githubusercontent.com/109089136/205083339-d56d5f15-c6d7-497f-9f44-de70f195d540.png)
 ![image](https://user-images.githubusercontent.com/109089136/205082944-108b5288-a6f5-498e-9753-678cfdbdf375.png)
 ![image](https://user-images.githubusercontent.com/109089136/205083132-e9480575-fb0d-467b-abff-fbdbf5645552.png)
-
+![image](https://user-images.githubusercontent.com/109089136/205098885-aec5f8d9-1c9f-4636-bc07-dce4d88083fd.png)
 
 
 ## 6. Informações importantes do projeto
