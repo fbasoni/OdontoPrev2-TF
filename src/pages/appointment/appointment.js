@@ -4,6 +4,7 @@ import { convertData } from "../../lib/convert.js";
 
 export default () => {
 const dentistAuth = getAuthDentist();
+const dentists = getDentists();
 const schedules = getSchedule();
 const patients = getPatients(); 
 
@@ -43,7 +44,7 @@ const patients = getPatients();
     .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'confirmed')
       .map((schedule) => {
         const patient = patients.find((patient) => patient.uid == schedule.patientUid);
-        console.log(patient)
+
 
           return `
           <div class="confirmed-appointments-list hide">
@@ -54,7 +55,6 @@ const patients = getPatients();
           </div>
         `
       }).join("");
-      console.log(templatePatients)
     appointmentsList.innerHTML += templatePatients;
   }
 
@@ -68,7 +68,6 @@ const patients = getPatients();
 
     const templatePatients = scheduleFilter.map((schedule) => {
         const patient = patients.find((patient) => patient.uid == schedule.patientUid);
-        console.log(patient)
 
           return `
           <div class="pending-appointments-list hide">
@@ -76,8 +75,19 @@ const patients = getPatients();
             <p class="patient-name">Paciente:${patient.name}</p>
             <p class="appointment-date">Dia da consulta: ${convertData(schedule.date)}</p>
             <p class="appointment-time">Horário da consulta: ${schedule.time}:00</p>
-            <button data-id=${schedule.id} class="confirm-btn">Confirmar</button>
-            <button data-id=${schedule.id} class="cancel-btn">Cancelar</button>
+            <div>
+                <button data-id=${schedule.id} class="confirm-btn">Confirmar</button>
+                  <div class="modal">
+                    <div class="internal-modal">
+                      <p> Deseja confirmar esse agendamento?</p>
+                      <div>Para o dia ${convertData(schedule.date)}</div>
+                      <div>às ${schedule.time}:00h, com paciente ${patient.name}?.</div>
+                      <button class="btn-del" data-sim="true"> SIM </button>
+                      <button class="btn-del" data-nao="true"> NÃO </button>
+                    </div>
+                  </div>
+                <button data-id=${schedule.id} class="cancel-btn">Cancelar</button>
+            </div>
           </div>
         `
       }).join("");
@@ -122,19 +132,37 @@ const patients = getPatients();
   });
 
   confirmBtn.forEach((btn) => {
-    btn.addEventListener("click", (el) => {
+      btn.addEventListener("click", (el) => {
       const target = el.currentTarget.dataset.id;
-      console.log(target);
-      confirmAppointment(target);
+      const targetParent = el.target.parentElement.dataset;;
+      const modal = el.target.parentElement.querySelector('.modal');
+      console.log(modal);
+      if (target){
+        modal.style.display = 'flex';
+      } 
+      if(el.targetParent.dataset.sim){
+        const modal = el.target.parentElement.querySelector('.modal')
+        modal.style.display = 'none';
+        confirmAppointment(target);
+      }
+      if(el.targetParent.dataset.nao){
+        const modal = el.target.parentElement.querySelector('.modal');
+        modal.style.display = 'none';
+      }
+
     });
   });
 
   cancelBtn.forEach((btn) => {
     btn.addEventListener("click", (el) => {
       const target = el.currentTarget.dataset.id;
-      console.log(target);
       cancelAppointment(target);
     });
+  });
+
+  const btnHome = document.querySelector(".logo-img");
+  btnHome.addEventListener("click", () => {
+    window.location.hash = '#home';
   });
 
   return container;

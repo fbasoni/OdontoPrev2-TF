@@ -39,8 +39,14 @@ export default () => {
   const table = container.querySelector(".schedule-dentist");
   const tablePatient = container.querySelector(".scheduling-confirmed")
   const menuStates = container.querySelector('#select-states');
-  // const menuSpecialties = container.querySelector('#select-states');
-  const postDentists = container.querySelector('#box-dentists');
+  const menuCitys = container.querySelector('#select-citys');
+  const inputSearch = container.querySelector('#input-search');
+  
+  const btnHome = document.querySelector(".logo-img");
+  btnHome.addEventListener("click", () => {
+    window.location.hash = '#home';
+  });
+
 
   // menu Estado //
   const extractStates = (listState) => {
@@ -48,9 +54,17 @@ export default () => {
     const templateSelect = templateState.filter((elem, i, array) => array.indexOf(elem) === i);
     menuStates.innerHTML += templateSelect.map((state) => `<option value="${state}">${state}</option>`);
   };
+    extractStates(dentistsData);
 
-  extractStates(dentistsData);
-
+  // menu Estado //
+  const extractCitys = (listState) => {
+    const templateCity = listState.map((dentist) => dentist.city);
+    const templateSelect = templateCity.filter((elem, i, array) => array.indexOf(elem) === i);
+    menuCitys.innerHTML += templateSelect.map((city) => `<option value="${city}">${city}</option>`);
+  };
+  extractCitys(dentistsData);
+  // const patient = getAuthPatient()
+  // const schedule = getSchedule();
 
   
   const printSchedule = (dentistList) => {
@@ -88,12 +102,23 @@ export default () => {
       avail.addEventListener("click", (e) => {
         const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
-        scheduleAppointment(id, patient.uid)
-        printSchedule(dentistList);
-        console.log(id);
+        const modal = e.currentTarget.querySelector('.modal');
+        if (id){
+          modal.style.display = 'flex';
+        }
+        if (e.target.dataset.sim){
+          modal.style.display = 'none';
+          const patient = getAuthPatient();
+          scheduleAppointment(id, patient.uid)
+          printSchedule(dentistList);
+        }
+        if (e.target.dataset.nao){
+          modal.style.display = 'none';
+        }
       });
     })
   };
+
 
   printSchedule(dentistsData);
  
@@ -120,16 +145,34 @@ export default () => {
   };
 
   printSchedulePatient();
+  //função de includes
 
-  // template 
+  const filterSearch = (dentists, text) =>
+  dentists.filter((dentist) => dentist.address.toLowerCase().includes(text.toLowerCase()) || dentist.name.toLowerCase().includes(text.toLowerCase()));
+  console.log(filterSearch);
 
-  menuStates.addEventListener('change', () => {
-    const state = menuStates.value;
-    console.log(state)
-    const result = dentistsData.filter((dentist) => dentist.state == state)
+  //não esta buscando pelo nome, 
+  inputSearch.addEventListener("input", () => {
+    let text = inputSearch.value;
+    const result = filterSearch(dentistsData, text)
     console.log(result)
     printSchedule(result);
   });
+
+
+  menuStates.addEventListener('change', () => {
+    const state = menuStates.value;
+    const result = dentistsData.filter((dentist) => dentist.state == state)
+    printSchedule(result);
+    filter = result;
+  });
+
+  menuCitys.addEventListener('change', () => {
+    const city = menuCitys.value;
+    const result = dentistsData.filter((dentist) => dentist.city == city)
+    printSchedule(result);
+  });
+
 
   return container;
 };
