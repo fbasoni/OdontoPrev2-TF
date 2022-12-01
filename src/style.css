@@ -47,6 +47,7 @@ main {
   width: 20vw;
   height: 11vh;
   margin-left: 4rem;
+  cursor: pointer;
 }
 
 footer {

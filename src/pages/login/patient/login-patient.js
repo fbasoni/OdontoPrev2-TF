@@ -68,6 +68,10 @@ export default () => {
 
   })
 
+  const btnHome = document.querySelector(".logo-img");
+  btnHome.addEventListener("click", () => {
+    window.location.hash = '#home';
+  });
     
   return containerLoginPatient;
 };

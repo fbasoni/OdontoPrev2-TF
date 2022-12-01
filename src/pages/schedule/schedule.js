@@ -19,9 +19,14 @@ export default () => {
       <select name="select-states" id="select-states" class="selects">
         <option value="default">Estado</option>
       </select>
-      <section class="space-detints"> 
-        <ul id="box-dentists"></ul>
-      </section>
+      <select name="select-citys" id="select-citys" class="selects">
+        <option value="default">Cidade</option>
+      </select>
+      <div class="input-label search">
+          <label  id="labelSearch">Busque pelo endereço ou nome do seu dentista </label>
+          <input  type="text" name="input-search" id="input-search" placeholder="ex: Estado, Bairro ou"/>
+      </div>
+        </div>
       <div class="schedule-dentist">
         <ul class="weekdays">       
         </ul>  
@@ -36,8 +41,14 @@ export default () => {
   const table = container.querySelector(".schedule-dentist");
   const tablePatient = container.querySelector(".scheduling-confirmed")
   const menuStates = container.querySelector('#select-states');
-  // const menuSpecialties = container.querySelector('#select-states');
-  const postDentists = container.querySelector('#box-dentists');
+  const menuCitys = container.querySelector('#select-citys');
+  const inputSearch = container.querySelector('#input-search');
+  
+  const btnHome = document.querySelector(".logo-img");
+  btnHome.addEventListener("click", () => {
+    window.location.hash = '#home';
+  });
+
 
   // menu Estado //
   const extractStates = (listState) => {
@@ -45,12 +56,18 @@ export default () => {
     const templateSelect = templateState.filter((elem, i, array) => array.indexOf(elem) === i);
     menuStates.innerHTML += templateSelect.map((state) => `<option value="${state}">${state}</option>`);
   };
+    extractStates(dentistsData);
 
-  extractStates(dentistsData);
+  // menu Estado //
+  const extractCitys = (listState) => {
+    const templateCity = listState.map((dentist) => dentist.city);
+    const templateSelect = templateCity.filter((elem, i, array) => array.indexOf(elem) === i);
+    menuCitys.innerHTML += templateSelect.map((city) => `<option value="${city}">${city}</option>`);
+  };
+  extractCitys(dentistsData);
+  // const patient = getAuthPatient()
+  // const schedule = getSchedule();
 
-
-  const patient = getAuthPatient()
-  const schedule = getSchedule();
 
   
   const printSchedule = (dentistList) => {
@@ -62,7 +79,7 @@ export default () => {
         table.innerHTML += `
           <li data-id=${time.id} class="schedule-date"> <tr>${convertData(time.date)} </tr>:${
             time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""}
-            <div class="modal">
+            <div class="modal modal-appointments">
               <div class="internal-modal">
                 <p> Deseja confirmar seu agendamento?</p>
                 <div>Para o dia ${convertData(time.date)}</div>
@@ -99,15 +116,6 @@ export default () => {
     })
   };
 
-  function myFunction() {
-    let text = "Deseja agendar?";
-    if (confirm(text) == true) {
-      text = "You pressed OK!";
-    } else {
-      text = "You canceled!";
-    }
-    table.innerHTML = text;
-  }
 
   printSchedule(dentistsData);
  
@@ -131,15 +139,34 @@ export default () => {
   };
 
   printSchedulePatient();
+  //função de includes
 
-  // template 
-  const result = []
+  const filterSearch = (dentists, text) =>
+  dentists.filter((dentist) => dentist.address.toLowerCase().includes(text.toLowerCase()) || dentist.name.toLowerCase().includes(text.toLowerCase()));
+  console.log(filterSearch);
+
+  //não esta buscando pelo nome, 
+  inputSearch.addEventListener("input", () => {
+    let text = inputSearch.value;
+    const result = filterSearch(dentistsData, text)
+    console.log(result)
+    printSchedule(result);
+  });
+
 
   menuStates.addEventListener('change', () => {
     const state = menuStates.value;
     const result = dentistsData.filter((dentist) => dentist.state == state)
     printSchedule(result);
+    filter = result;
   });
+
+  menuCitys.addEventListener('change', () => {
+    const city = menuCitys.value;
+    const result = dentistsData.filter((dentist) => dentist.city == city)
+    printSchedule(result);
+  });
+
 
   return container;
 };

@@ -30,6 +30,10 @@ const initScreens = () => {
   }
 };
 
+const btnHome = document.querySelector(".logo-img");
+btnHome.addEventListener("click", () => {
+  window.localtion.hash="#home"
+})
 
 window.addEventListener('hashchange', () => {
   initScreens();
