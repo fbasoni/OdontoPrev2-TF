@@ -53,10 +53,10 @@ export default () => {
   const schedule = getSchedule();
 
   
-  const printSchedule = () => {
+  const printSchedule = (dentistList) => {
     table.innerHTML = '';
     const schedule = getSchedule();
-    dentistsData.forEach((dentist) => {
+    dentistList.forEach((dentist) => {
       table.innerHTML +=`<p> ${dentist.name}</p>`
       schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
         table.innerHTML += `
@@ -74,13 +74,13 @@ export default () => {
         const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
         scheduleAppointment(id, patient.uid)
-        printSchedule();
+        printSchedule(dentistList);
         console.log(id);
       });
     })
   };
 
-  printSchedule();
+  printSchedule(dentistsData);
  
   // template da agenda do beneficiário
   const printSchedulePatient = () => {  
@@ -110,8 +110,7 @@ export default () => {
     console.log(state)
     const result = dentistsData.filter((dentist) => dentist.state == state)
     console.log(result)
-    const states = printSchedule(result);
-    table.innerHTML = states;
+    printSchedule(result);
   });
 
   return container;
