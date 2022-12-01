@@ -1,12 +1,13 @@
 import { getDentists, getPatients, getSchedule, getAuthDentist, getAuthPatient, confirmAppointment, cancelAppointment } from "../../lib/storage.js";
 import { convertData } from "../../lib/convert.js";
 
+
+export default () => {
 const dentistAuth = getAuthDentist();
 const dentists = getDentists();
 const schedules = getSchedule();
 const patients = getPatients(); 
 
-export default () => {
   const container = document.createElement("div");
   const template = `    
         <div class="appointment-container">
@@ -18,7 +19,7 @@ export default () => {
           <section class="schedule">
             <h1>Agenda de consultas</h1>
             <button class="confirmed-appointments">Confirmadas</button>
-            <button class="pending-appointments">Pendentes</button>
+            <button class="pending-appointments">Pendentes <div class="count-pending"></div></button>
             <span class="appointment-status">Consultas ------</span>
             <div class="appointment-info">
 
@@ -33,6 +34,9 @@ export default () => {
   const confirmedButton = container.querySelector(".confirmed-appointments");
   const pendingButton = container.querySelector(".pending-appointments");
   const appointmentsList = container.querySelector(".appointment-info");
+  const countPending = container.querySelector(".count-pending");
+
+  
 
   const printConfirmedAppointment = () => {  
     const templatePatients = schedules
@@ -55,9 +59,14 @@ export default () => {
   }
 
    const printPendingAppointment = () => {  
-    const templatePatients = schedules
-    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'pending')
-      .map((schedule) => {
+    const scheduleFilter = schedules
+    .filter((schedule) => schedule.dentistUid === dentistAuth.uid && schedule.status == 'pending');
+
+    countPending.innerHTML = scheduleFilter.length
+
+
+
+    const templatePatients = scheduleFilter.map((schedule) => {
         const patient = patients.find((patient) => patient.uid == schedule.patientUid);
         console.log(patient)
 
@@ -100,6 +109,7 @@ export default () => {
      if (pendingAppointments !== null) {
       pendingAppointments.forEach((appointment) => appointment.classList.remove("hide"));
      }
+
   });
 
   confirmBtn.forEach((btn) => {
