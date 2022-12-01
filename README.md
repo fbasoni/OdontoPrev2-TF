@@ -27,8 +27,9 @@
 * [3. Planejamento](#3-Planejamento)
 * [4. Pesquisa de Usuário e História de usuário](#4-Pesquisa-de-Usuário-e-História-de-usuário)
 * [5. Protótipo](#5-Protótipo)
-* [6. Teste de Usabilidade](#6-Teste-de-Usabilidade)
-* [7. Ferramentas e Tech Skills](#7-Ferramentas-e-Tech-Skills)
+* [6. Informações importantes do projeto](#6-Informações-importantes-do-projeto)
+* [7. Teste de Usabilidade](#6-Teste-de-Usabilidade)
+* [8. Ferramentas e Tech Skills](#7-Ferramentas-e-Tech-Skills)
 
 ***
 
@@ -90,14 +91,26 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 #### Desktop
 
 
+## 6. Informações importantes do projeto
+
+O projeto foi idealizado em Local Storage. Para poder entrar pelo Login, deve-se utilizar um dos usuários cadastrados abaixo:
+Para Login na parte de Dentista:
+julienefjs@hotmail.com
+ariane@hotmail.com
+
+Para Login na parte de Paciente:
+tamyres@hotmail.com
+fabiany@hotmail.com
+
+TODAS as senhas são 123456
 
 
-## 6. Teste de Usabilidade
+## 7. Teste de Usabilidade
 
 Após fazermos os testes manuais e de usabilidade, incorporamos os feedbacks dados pelos usuários, e fizemos as seguintes mudanças:
 
 
-## 7. Ferramentas e Tech Skills
+## 8. Ferramentas e Tech Skills
 
 - Figma;
 - Trello;
@@ -105,6 +118,7 @@ Após fazermos os testes manuais e de usabilidade, incorporamos os feedbacks dad
 - HTML5;
 - CSS;
 - Javascript;
+- Local Storage.
 
 
 ## Desenvolvedoras👩
