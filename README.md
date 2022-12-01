@@ -23,16 +23,17 @@
 ## Índice
 
 * [1. Resumo do Projeto](#1-Resumo-do-Projeto)
-* [2. Definição de produto](#2-Definição-do-produto)
+* [2. Definição de produto](#2-Definição-de-produto)
 * [3. Planejamento](#3-Planejamento)
 * [4. Pesquisa de Usuário e História de usuário](#4-Pesquisa-de-Usuário-e-História-de-usuário)
 * [5. Protótipo](#5-Protótipo)
-* [6. Teste de Usabilidade](#6-Teste-de-Usabilidade)
-* [7. Ferramentas e Tech Skills](#7-Ferramentas-e-Tech-Skills)
+* [6. Informações importantes do projeto](#6-Informações-importantes-do-projeto)
+* [7. Teste de Usabilidade](#7-Teste-de-Usabilidade)
+* [8. Ferramentas e Tech Skills](#8-Ferramentas-e-Tech-Skills)
 
 ***
 
-## 💻 1. Resumo do Projeto
+## 1. Resumo do Projeto
 
 Este projeto foi desenvolvido para o Talent Fest 2022. No qual tivemos o objetivo de desenvolver, em parceria com a OdontoPrev, um módulo para Beneficiários e Dentistas.
 
@@ -46,7 +47,7 @@ Além disso, utilizamos o local storage, para armazenar e manipular os dados.
 Nossas projeto foi planejado conforme as necessidades apresentadas em nossas histórias de usuário - as quais foram criadas com base na nossa pesquisa de usuário. Deste modo, definimos e trabalhamos no desenvolvimento das funcionalidades de nossa aplicação com base nas necessidades dos usuários.
 
 
-## 🚀 2. Definição de produto
+## 2. Definição de produto
 
 Sabemos que principalmente após a pandemia, cada vez mais as pessoas estão recorrendo a serviços online, que tambem agiliza muito o processo.
 Como afirma um artigo científico, 72% dos pacientes buscam informações na internet antes de agendar uma consulta, ou seja, eles já estão online.[^1] E segundo pesquisas 77% dos clientes, acham que a possiblidade de agendar, alterar e cancelar um agendamento online é muito importante, enquanto 74% dos millenials (Idades entre 18 e 34 anos) valorizam o agendamento online.[^2]
@@ -54,12 +55,12 @@ Como afirma um artigo científico, 72% dos pacientes buscam informações na int
 Sendo assim, esse projeto ajudará que mais pessoas tenham acesso a facilidade que é marcar uma consulta de modo rápido online.
 
 
-## 📑 3. Planejmaneto
+## 3. Planejamento
 
 Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks em 'baby steps', divididas em 'to do' (por fazer), 'doing' (fazendo) e 'done' (feito).
 
 
-## 📋 4. Pesquisa de Usuário e História de usuário
+## 4. Pesquisa de Usuário e História de usuário
 
 ### Beneficiários
 - Buscar na rede dentistas próximos a mim
@@ -70,15 +71,13 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 - Tela de agenda com as consultas marcadas
 - Alerta: para novas consultas onde eu possa aceitar ou não o agendamento
 
-### **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as necessidades do usuário.
-
 ### **Definição de pronto:** 
 - Passar pelo Eslint
 - Code Review
 - Códigos, nomes das divs, class, afins, tudo em inglês
 - Versionado
 
-## 🖼️ 5. Protótipo
+## 5. Protótipo
 
 ### Baixa fidelidade
 
@@ -92,14 +91,26 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 #### Desktop
 
 
+## 6. Informações importantes do projeto
+
+O projeto foi idealizado em Local Storage. Para poder entrar pelo Login, deve-se utilizar um dos usuários cadastrados abaixo:
+Para Login na parte de Dentista:
+julienefjs@hotmail.com
+ariane@hotmail.com
+
+Para Login na parte de Paciente:
+tamyres@hotmail.com
+fabiany@hotmail.com
+
+TODAS as senhas são 123456
 
 
-## 6. Teste de Usabilidade
+## 7. Teste de Usabilidade
 
 Após fazermos os testes manuais e de usabilidade, incorporamos os feedbacks dados pelos usuários, e fizemos as seguintes mudanças:
 
 
-## 7. Ferramentas e Tech Skills
+## 8. Ferramentas e Tech Skills
 
 - Figma;
 - Trello;
@@ -107,6 +118,7 @@ Após fazermos os testes manuais e de usabilidade, incorporamos os feedbacks dad
 - HTML5;
 - CSS;
 - Javascript;
+- Local Storage.
 
 
 ## Desenvolvedoras👩

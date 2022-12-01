@@ -6,32 +6,30 @@ import {
   getDentists,
 } from "../../lib/storage.js";
 
+  const patient = getAuthPatient();
+  const schedule = getSchedule();
+
 export default () => {
   const container = document.createElement('div');
   const template = `    
   <div class="my-schedule main-page-schedule">
     <div class="scheduling-patient">
-      <p>Meus próximos agendamentos</p><br>
+      <span class="patient-name">Olá, ${patient.name}.</span>
+      <strong class="next-appointments">Seus próximos agendamentos:</strong>
       <div class="scheduling-confirmed">      
       </div>
     </div>
+    <h1 class="schedule-an-appointment">Agende uma consulta com nossos dentistas:</h1>
     <section class="filter-dentist">
+    <p class="findlocation">Encontre um dentista no seu estado:</p>
       <select name="select-states" id="select-states" class="selects">
         <option value="default">Estado</option>
       </select>
-      <select name="select-citys" id="select-citys" class="selects">
-        <option value="default">Cidade</option>
-      </select>
-      <div class="input-label search">
-          <label  id="labelSearch">Busque pelo endereço ou nome do seu dentista </label>
-          <input  type="text" name="input-search" id="input-search" placeholder="ex: Estado, Bairro ou"/>
-      </div>
-        </div>
-      <div class="schedule-dentist">
-        <ul class="weekdays">       
-        </ul>  
-      </div>  
-    </section>
+      </section>
+      
+          <div class="schedule-dentist">
+          </div> 
+    </div>  
   </div>
     `;
   container.innerHTML = template;
@@ -68,36 +66,41 @@ export default () => {
   // const patient = getAuthPatient()
   // const schedule = getSchedule();
 
-
   
   const printSchedule = (dentistList) => {
     table.innerHTML = '';
     const schedule = getSchedule();
     dentistList.forEach((dentist) => {
-      table.innerHTML +=`<p> ${dentist.name}</p>`
-      schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid).forEach((time) => {
-        table.innerHTML += `
-          <li data-id=${time.id} class="schedule-date"> <tr>${convertData(time.date)} </tr>:${
-            time.status === "available" ? "<button>"+time.time+ ":00" + "</button>" : ""}
-            <div class="modal modal-appointments">
-              <div class="internal-modal">
-                <p> Deseja confirmar seu agendamento?</p>
-                <div>Para o dia ${convertData(time.date)}</div>
-                <div>às ${time.time}:00h.</div>
-                <div> com Dr.(a) ${dentist.name}.</div>
-                <div> Seu dentista tem o prazo de até 1 dia útil para confirmar sua consulta.</div>
-                <button class="btn-del" data-sim="true"> SIM </button>
-                <button class="btn-del" data-nao="true"> NÃO </button>
-              </div>
-            </div>
-          </li>
-     `;
-    })
+      const dentistsSchedule = schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid)
+      const dentistsScheduleElement = dentistsSchedule.map(time => `
 
-    })   
-    const linhas = table.querySelectorAll(".schedule-date");
-    linhas.forEach((linha) => {
-      linha.addEventListener("click", (e) => {
+            <div class="schedule-date-time">
+              <div class="detist-date">${convertData(time.date)}</div> 
+              ${
+                time.status === "available"
+                  ? `<div data-id=${time.id} class="schedule-date schedule-time">${time.time} :00 `
+                  : ""
+              }
+              </div>
+          </div>
+
+          `).join('');
+               table.innerHTML += `
+          <div class="dentist-template">
+            <div class="dentist-info">
+              <div class="dentist-picture"> 
+                <img src="./assets/icons/others/user.svg" class="dentist-pfp" alt="dentist picture">
+              </div>
+              <p class="dentist-name">Dentista: ${dentist.name}.</p>
+            </div> 
+            ${dentistsScheduleElement}
+          </div>`;
+    })
+      
+    const availability = table.querySelectorAll(".schedule-date");
+    availability.forEach((avail) => {
+      avail.addEventListener("click", (e) => {
+        const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
         const modal = e.currentTarget.querySelector('.modal');
         if (id){
@@ -126,11 +129,14 @@ export default () => {
       .map((time) => {
         const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);
         return `
-        <li data-id=${time.id} class="schedule-date">${convertData(time.date)} ${time.time}hr.
-          Dr. ${dentist.name}; Cidade: ${dentist.city}
-          <button class="btn-localization" id="localization-btn">Localização</button>
-          <button class="btn-localization" id="localization-btn-cancelar">Cancelar Agendamento</button>
-        </li>
+        <div data-id=${time.id} class="schedule-date">
+          <div class="scheduling-information">
+            <p><strong>Data de agendamento:</strong> ${convertData(time.date)} às ${time.time}:00hs.</p>  
+            <p><strong>Dentista:</strong> Dra. ${dentist.name}.</p> 
+            <p><strong>Local de atendimento:</strong> ${dentist.address}.</p>
+          </div>
+          <button class="btn-cancel-appointment" id="btn-cancel-appointment">Cancelar Agendamento</button>
+        </div>
    `;
       })
 

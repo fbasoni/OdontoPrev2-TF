@@ -4,18 +4,21 @@ export const convertData = (dateString) => {
   const ptBr = date.toLocaleDateString('pt-br');
   switch (day) {
     case 0:
-      return `${ptBr} Domingo`;
+      return `Domingo – 
+      ${ptBr} `;
     case 1:
-      return `${ptBr} Segunda-Feira`;
+      return `Segunda – 
+      ${ptBr} `;
     case 2:
-      return `${ptBr} Terça-Feira`;
+      return `Terça – 
+      ${ptBr} `;
     case 3:
-      return `${ptBr} Quarta-Feira`;
+      return `Quarta – ${ptBr} `;
     case 4:
-      return `${ptBr} Quinta-Feira`;
+      return `Quinta – ${ptBr} `;
     case 5:
-      return `${ptBr} Sexta-Feira`;
+      return `Sexta – ${ptBr}`;
     case 6:
-      return `${ptBr} Sábado-Feira`;
+      return `Sábado – ${ptBr}`;
   }
 }
