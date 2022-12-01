@@ -82,10 +82,7 @@ Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks 
 
 #### Desktop
 
-![WhatsApp Image 2022-12-01 at 11 18 43 AM](https://user-images.githubusercontent.com/109089136/205078965-a97a8ec0-1d9a-464a-addc-4149a6487808.jpeg)
-![WhatsApp Image 2022-12-01 at 11 19 11 AM](https://user-images.githubusercontent.com/109089136/205078996-6866dafc-1d24-4ae0-9464-04e4329f0bea.jpeg)
-![WhatsApp Image 2022-12-01 at 11 19 33 AM](https://user-images.githubusercontent.com/109089136/205079108-0308d52f-5ee8-4103-9258-b1f3fe54f00d.jpeg)
-
+![image](https://user-images.githubusercontent.com/109089136/205084475-19efb4f0-c0da-42b6-b5bd-5468c3c0c565.png)
 
 ## Alta fidelidade
 
