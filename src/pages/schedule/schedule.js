@@ -7,9 +7,6 @@ import {
   cancelAppointment,
 } from "../../lib/storage.js";
 
-  const patient = getAuthPatient();
-  const schedule = getSchedule();
-
 export default () => {
   const container = document.createElement('div');
   const template = `    
