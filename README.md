@@ -23,7 +23,7 @@
 ## Índice
 
 * [1. Resumo do Projeto](#1-Resumo-do-Projeto)
-* [2. Definição de produto](#2-Definição-do-produto)
+* [2. Definição de produto](#2-Definição-de-produto)
 * [3. Planejamento](#3-Planejamento)
 * [4. Pesquisa de Usuário e História de usuário](#4-Pesquisa-de-Usuário-e-História-de-usuário)
 * [5. Protótipo](#5-Protótipo)
@@ -55,7 +55,7 @@ Como afirma um artigo científico, 72% dos pacientes buscam informações na int
 Sendo assim, esse projeto ajudará que mais pessoas tenham acesso a facilidade que é marcar uma consulta de modo rápido online.
 
 
-## 3. Planejmaneto
+## 3. Planejamento
 
 Todo o planejmaneto do projeto foi feito no Trello, em Quadro Kanban, com tasks em 'baby steps', divididas em 'to do' (por fazer), 'doing' (fazendo) e 'done' (feito).
 
