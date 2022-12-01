@@ -27,7 +27,7 @@ export const confirmAppointment = (scheduleId) => {
 };
 
 export const cancelAppointment = (scheduleId) => {
-  updateStatusAppointment(scheduleId, 'cancelled');
+  updateStatusAppointment(scheduleId, "available");
 };
 
 const updateStatusAppointment = (scheduleId, status) => {

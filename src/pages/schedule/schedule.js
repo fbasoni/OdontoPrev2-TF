@@ -22,19 +22,22 @@ export default () => {
     </div>
     <h1 class="schedule-an-appointment">Agende uma consulta com nossos dentistas:</h1>
     <section class="filter-dentist">
-        <p class="findlocation">Encontre um dentista no seu estado:</p>
-    </section>
-    <section class="filter-dentist">
-      <select name="select-states" id="select-states" class="selects">
+        
+          <section class="filter-dentist">
+          <div class="plocation">
+          <p class="findlocation section-select">Encontre um dentista OdontoPrev perto de você:</p>
+      <select name="select-states " id="select-states" class="selects">
         <option value="default">Estado</option>
       </select>
       <select name="select-citys" id="select-citys" class="selects">
         <option value="default">Cidade</option>
       </select>
-      <div class="input-label search">
-          <label  id="labelSearch">Busque pelo endereço ou nome do seu dentista </label>
-          <input  type="text" name="input-search" id="input-search" placeholder="ex: Estado, Bairro ou"/>
       </div>
+      <div class="input-label search">
+          <label  id="labelSearch">Busque pelo endereço ou nome do seu dentista: </label>
+          <input  type="text" class="search-bar" name="input-search" id="input-search" placeholder="🔎 ex: Estado, Bairro, Nome..."/>
+      </div>
+    </section>
     </section>
       
           <div class="schedule-dentist">
@@ -110,8 +113,8 @@ export default () => {
               <div class="dentist-picture"> 
                 <img src="./assets/icons/others/user.svg" class="dentist-pfp" alt="dentist picture">
               </div>
-              <p class="dentist-name">Dentista: ${dentist.name}.</p>
-              <p class="dentist-name">Endereço: ${dentist.address}.</p>
+              <p class="dentist-name"><strong>Dentista:</strong> ${dentist.name}.</p>
+              <p class="dentist-name"><strong>Endereço:</strong> ${dentist.address}.</p>
             </div> 
             ${dentistsScheduleElement}
           </div>`;
@@ -192,6 +195,7 @@ export default () => {
             case "confirm":
               cancelAppointment(target);
               modal.style.display = 'none';
+              window.location.reload();
               break;
             case "cancel":
               modal.style.display = 'none';
