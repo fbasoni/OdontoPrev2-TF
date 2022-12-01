@@ -1,44 +1,120 @@
-.main-schedule{
+.scheduling-patient {
+  border: solid black 2px;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 12px;
+  flex-direction: column;
+  width: 63vw;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  padding: 2rem;
+}
+
+.schedule-date {
+  list-style: none;
+  margin-top: -1rem;
+  display: flex;
+}
+
+.btn-cancel-appointment {
+  width: 10rem;
+  height: 2rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  background: #003863;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.btn-cancel-appointment:hover {
+  background-color: #05508a;
+  transition: 2s;
+}
+
+.next-appointments {
+  margin-bottom: 2rem;
+}
+
+.patient-name {
+  margin-bottom: 2rem;
+}
+
+.schedule-time {
+  background: #6BE9FF;
+  border-radius: 9px;
+    font-size: 15px;
+    padding: 0rem 0.6rem;
+    width: 4rem;
+    margin-top: 0.1rem;
+}
+
+.schedule-time:hover {
+  cursor: pointer;
+}
+
+.schedule-dentist {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.dentist-template {
+  gap: 8rem;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 45rem;
+  height: 10rem;
+  margin-left: 10rem;
+  display: flex;
+}
+
+.schedule-date-time {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3%;
-  border: 2px solid black;
-}
-
-.scheduled-appointments-patients{
-  text-align: center;
-}
-/* .scheduling-space{
-  display: flex;
-  height: 100%;
-  width: 50%;
-  flex-direction: column;
-  align-items: center;
-  margin: 2%;
-  border: 2px solid red;
-}
-.confirm-rejected{
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  margin: 3%;
-  border: 2px solid blueviolet;
-}
-
-.space-btn-schedule{
-  display: flex;
-  flex-direction: row;
+  gap: 1rem;
   justify-content: center;
-  width: 100%;
-  margin: 2%;
+
 }
 
-.btn-schedule{
-  margin: 2%;
+.dentist-pfp {
+  width: 5rem;
+  margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+
+}
+.dentist-info {
+  display: flex;
+    flex-direction: column;
+      gap: 1rem;
+      margin-left: 1.5rem;
+}
+li {
+  list-style-type: none;
 }
 
-.box-schedule{
-  border: 2px solid blue;
-} */
+.filter-dentist {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 5rem;
+  margin-top: 3rem;
+    margin-left: -30.5rem;
+}
+
+.selects {
+
+}
+.findlocation{
+
+}
+
+.schedule-an-appointment {
+margin-top: 4rem;
+  margin-left: 6rem;
+  font-size: 24px;
+}

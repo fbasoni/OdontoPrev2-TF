@@ -12,11 +12,11 @@ export const getSchedule = () => {
 
 const getScheduleById = (scheduleId) => {
   const scheduleById = getSchedule();
-  console.log(scheduleById);
+  // console.log(scheduleById);
   const filter = scheduleById.filter(
     (schedule) => schedule.id === parseInt(scheduleId)
   );
-  console.log(filter);
+  // console.log(filter);
   if (filter !== null) {
     return filter[0];
   }
@@ -128,7 +128,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistRodolfo = {
-    uid: 2,
+    uid: 3,
     name: "Rodolfo Alves",
     state: "Rio de Janeiro",
     city: "Rio de Janeiro",
@@ -138,7 +138,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistAna = {
-    uid: 2,
+    uid: 4,
     name: "Ana Marques",
     state: "São Paulo",
     city: "Osasco",
@@ -148,7 +148,7 @@ const createDentistsData = () => {
     password: "123456",
   };
   const dentistCarlos = {
-    uid: 2,
+    uid: 5,
     name: "Carlos Augusto Silva",
     state: "Paraná",
     city: "Curitiba",
@@ -220,7 +220,7 @@ const createScheduleData = () => {
   };
   const fourthAppointment = {
     id: 4,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/07"),
@@ -228,7 +228,7 @@ const createScheduleData = () => {
   };
   const fifthAppointment = {
     id: 5,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/08"),
@@ -236,7 +236,7 @@ const createScheduleData = () => {
   };
   const sixthAppointment = {
     id: 6,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/09"),
@@ -244,7 +244,7 @@ const createScheduleData = () => {
   };
   const seventhAppointment = {
     id: 7,
-    detistUid: 2,
+    dentistUid: 2,
     patientUid: null,
     time: 11,
     date: new Date("2022/12/12"),
@@ -261,7 +261,7 @@ const createScheduleData = () => {
 };
 
 export const initData = () => {
-  console.log("teste");
+  // console.log("teste");
   createDentistsData();
   createPatientsData();
   createScheduleData();

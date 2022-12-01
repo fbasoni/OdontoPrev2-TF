@@ -4,7 +4,6 @@ import { convertData } from "../../lib/convert.js";
 
 export default () => {
 const dentistAuth = getAuthDentist();
-const dentists = getDentists();
 const schedules = getSchedule();
 const patients = getPatients(); 
 
