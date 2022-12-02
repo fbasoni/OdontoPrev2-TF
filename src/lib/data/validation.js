@@ -3,7 +3,7 @@ export function validateEmail(email) {
   const validation = emailRegex.test(email);
 
   if (!email) return "Por favor, digite seu e-mail.";
-  if (!validation) return "Formado de e-mail inválido.";
+  if (!validation) return "Formato de e-mail inválido.";
 }
 
 export function validatePassword(password) {
