@@ -104,6 +104,7 @@ ariane@hotmail.com
 Para Login na parte de Paciente:
 tamyres@hotmail.com
 fabiany@hotmail.com
+raquel@hotmail.com
 
 TODAS as senhas são 123456
 
